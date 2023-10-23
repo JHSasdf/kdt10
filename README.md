@@ -10,3 +10,4 @@ git commit -m "COMMENT"
 
 git status 로는 Staging영역까지는 확인 가능하지만 Local repository영역까지는 확인 불가
 
+오늘 수업은 12시까지
