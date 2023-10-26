@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Font</title>
+    <style>
+      @font-face {
+        font-family: "Orbit-Regular";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/Orbit-Regular.woff2")
+          format("woff2");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+      .box {
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 700;
+        background-color: yellow;
+        padding: 1rem;
+        line-height: 2; /* font-size의 2배라는 뜻 */
+        box-sizing: border-box;
+      }
+
+      /* font-family */
+      p {
+        margin: 2rem;
+        text-align: right;
+      }
+
+      .google {
+        font-family: "Oswald","Bagel Fat One", sans-serif;
+   
+      }
+      .noonoo {
+        font-family: 'HakgyoansimWoojuR', "Orbit-Regular", sans-serif;
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- line height -->
+    <div class="box">
+      <p>text</p>
+    </div>
+    <div class="practice">
+    <p class="google">
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, nobis <br>
+      eaque similique blanditiis recusandae fugit adipisci et maiores porro <br>
+      excepturi repellendus nisi voluptatibus debitis non, minima qui ab <br>
+      laboriosam aliquam.
+    </p>
+    <p class="noonoo">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit <br>
+      itaque repudiandae fuga ea, distinctio placeat ipsam optio architecto. <br>
+      Voluptas nihil veniam commodi. Dolorem eum unde aut. Exercitationem <br>
+      repellendus similique velit?
+    </p>
+</div>
+  </body>
+</html>

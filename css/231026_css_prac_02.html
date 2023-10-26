@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+        input[disabled] {
+            background-color: red;
+        }
+
+        [placeholder="이름"] {
+            background-color: orange;
+        }
+
+        /* *:not([placeholder]) {
+            background-color: blue;
+        } */
+
+        .orange-box {
+          width: auto;
+          height: 200px;
+          background-color: orange;
+          box-sizing: border-box;
+        }
+
+        .lang {
+          display: inline-block;
+          margin-right: 30px;
+          width: 200px;
+          height: 100px;
+        }
+        /* .orange div:nth-child(n) {
+          이렇게 하면 line 28 부터 class 적용 안해도 가능함.
+        } */
+        
+        .html {
+          background-color: lightblue;
+        }
+
+        .css {
+          background-color: green;
+        }
+
+        .javascript {
+          background-color: red;
+        }
+
+    </style>
+  </head>
+  <body>
+    <input type="text" placeholder="이름" /><input
+      type="password"
+      value="pw"
+    /><input type="text" value="000-0000-0000" /><input
+      type="text"
+      placeholder="핸드폰"
+    /><input type="text" placeholder="주민번호" disabled />
+
+    <main>
+      <div class="orange-box">
+        <div class="lang html">HTML</div>
+        <div class="lang css">CSS</div>
+        <div class="lang javascript">Javascript</div>
+      </div>
+
+    </main>
+  </body>
+</html>

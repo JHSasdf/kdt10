@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+      h1:hover {
+        color: red;
+      }
+
+      a:active {
+        background-color: blue;
+      }
+
+      input:focus {
+        background-color: orange;
+      }
+      
+      /* first-child span이 첫 자식이면 요소 적용 */
+      .fruits span:first-child {
+        color: red;
+      }
+
+      /* div는 .fruits의 firstChild가 아니기 때문에 선택x 하지만 손자요소의 div가 first-child이기 때문에 첫번쨰 dummy는 걸린다. */
+      .fruits div:first-child {
+        color: violet;
+      }
+
+      /* last-child */
+      .fruits h3:last-child {
+        color: pink;
+      } 
+
+      /* nth-child(n) */
+      .fruits *:nth-child(2) {
+        color: aqua;
+      }
+
+      .fruits *:nth-child(2n) {
+        /* n은 0부터, 0번쨰는 없으므로 적용되지 않고 2n+2와 같은 식이 되는 듯 */
+        background-color: yellow;
+      }
+
+      .fruits *:not(span) {
+        background-color: lightblue;
+      }
+
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      ul li:nth-child(2n+1) {
+        color: white;
+        background-color: navy;
+      }
+
+      ul li:nth-child(2n+2) {
+        background-color: yellow;
+      }
+
+      /* 가상 요소 선택자 */
+      /* before */
+      .fruits::before {
+        content: "과일 목록 시작";
+        background-color: red;
+      }
+
+      .fruits::after {
+        content: "sfsfsf";
+        color: white;
+        background-image: url("./../christmas.jpg");
+        background-size:100% 100%;
+        width:10rem;
+        height:10rem;
+        object-fit: cover;
+        display:inline-block;
+        position: relative;
+        text-align: center;
+        font-size: 2rem;
+        
+
+      }
+
+      .box::before {
+        content: "택시";
+      }
+
+      .box::after {
+        content: 빨리";
+      }
+
+    </style>
+
+    <style>
+      
+
+        *:not([placeholder]) {
+            background-color: blueviolet;
+        }
+
+        [readonly] {
+            background-color: lightgray;
+        }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>hover시에 text color = red</h1>
+    </header>
+    <main>
+      <a href="">active 시에 backgroundColor = blue</a>
+      <input type="text" placeholder="focus 시에 backgroundColor = orange" />
+        <hr>
+      
+        <div class="fruits">
+            <span>딸기</span>
+            <span>수박</span>
+            <div>오렌지
+                <div>dummy</div>
+                <li>dummy</li>
+                <li>dummy</li>
+            </div>
+            <p>망고</p>
+            <h3>람부탄</h3>
+        </div>
+
+        <hr>
+        <ul>
+            <li>navy</li>
+            <li>yellow</li>
+            <li>navy</li>
+            <li>yellow</li>
+            <li>navy</li>
+            <li>yellow</li>
+            <li>navy</li>
+            <li>yellow</li>
+            <li>navy</li>
+            <li>yellow</li>
+        </ul>
+
+        <hr>
+
+        <div class="box">여기요!</div>
+
+        <hr>
+
+        <input type="text">
+        <input type="text" readonly>
+        <input type="text" placeholder="good">
+    </main>
+  </body>
+</html>

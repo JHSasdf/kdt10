@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    /* Pseudo Selector */
+    a{
+        text-decoration: none;
+        color: black;
+        border-radius: 3px;
+    }
+
+    a:hover {
+        background-color: rgb(212, 212, 212);
+        color: white;
+        
+    }
+    
+    /* active: 마우스 클릭하고 있는 동안 */
+    a:active {
+        background-color: rgb(153, 153, 153);
+    }
+
+    /* focus가 가있는 동안, 클릭 했을 때 */
+    input:focus {
+        background-color: rgb(212, 212, 212);
+        outline: none;
+        border: 1px solid brown0;
+    }
+
+</style>
+</head>
+<body>
+    <a href="https://naver.com">Naver</a>
+    <input type="text">
+</body>
+</html>
