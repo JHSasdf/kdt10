@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>width & hegiht</title>
+
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+
+      div:nth-child(1) {
+        background-color: aqua;
+        width: 100px;
+        height: 100px;
+      }
+
+      div:nth-child(2) {
+        background-color: aquamarine;
+        width: 100vw;
+        height: 100px;
+      }
+
+      div:nth-child(3) {
+        background-color: #dec4da;
+        width: calc(30vw - 100px);
+        height: 30vh;
+        max-width: 300px;
+        min-width: 200px;
+      }
+
+      .border {
+        background-color: #dec4da;
+        margin: 3rem;
+        width: 200px;
+        height: 200px;
+        border: 2px solid rgb(102, 253, 182);
+        border-style: dotted;
+        border-radius: 5px;
+      }
+
+      hr {
+        margin: 3rem 0;
+      }
+
+      section {
+        font-size: 0;
+        letter-spacing: 0;
+        word-spacing: 0;
+      }
+
+      .square {
+        width: 100px;
+        height: 100px;
+        border: 1px solid;
+        display: inline-block;
+        min-width: 0;
+      }
+
+      .d-none {
+        /* display: none; */
+        background-color: red;
+      }
+
+      .invisible {
+        /* visibility: hidden; */
+        background-color: orangered;
+      }
+
+      .opacity-0 {
+        /* opacity: 0; */
+        background-color: tomato;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <!-- border -->
+    <div class="border"></div>
+
+    <hr />
+    <section>
+      <div class="square">original</div>
+      <div class="square d-none">d-none</div>
+      <div class="square invisible">invisible</div>
+      <div class="square opacity-0">opacity-0</div>
+      <div class="square original">original</div>
+    </section>
+
+    <!-- overflow -->
+    <div class="square" style="overflow: scroll">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ut eos labore
+      maiores suscipit placeat libero nostrum praesentium exercitationem quo
+      ipsum atque alias veritatis, error eum laborum, officia cumque. Ad. Eius
+      vero velit ad veniam repellat aperiam modi quis ullam reprehenderit
+      placeat, nesciunt, vel deleniti dolorem deserunt, unde iste! Recusandae
+      eos dignissimos totam sunt quidem odit non autem unde reiciendis? Est
+      alias ex suscipit libero quisquam animi minima, minus iure provident
+      aliquam omnis eligendi ab, laudantium facilis quod consectetur obcaecati
+      ut maxime. Aliquid quis laudantium, excepturi ipsam molestias molestiae
+      maiores.
+    </div>
+
+    <div class="square" style="overflow: auto">
+      over flow aliquam omnis eligendi ab, laudantium facilis quod consectetur
+      obcaecati ut maxime. Aliquid quis laudantium, excepturi ipsam molestias
+      molestiae maiores.
+    </div>
+  </body>
+</html>

@@ -1,53 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Question</title>
-    <link rel="stylesheet" href="./../style.css">
-</head>
-<body>
-    <header><h1>설문조사</h1></header>
-    <section>
+    <link rel="stylesheet" href="./../style.css" />
+  </head>
+  <body>
     <main>
-        <p><label for="name">이름</label>
-        <input type="text" id="name"></p>
+      <header><h1>설문조사</h1></header>
+      <section>
+        <p><label for="name">이름</label> <input type="text" id="name" /></p>
         <p>
-        <label for="email">이메일</label>
-            <input type="email" id="email" placeholder="love@example.com">
+          <label for="email">이메일</label>
+          <input type="email" id="email" placeholder="love@example.com" />
         </p>
-        </section>
-        <section>
-            <h2>나이</h2>
+      </section>
+      <section>
+        <h2>나이</h2>
 
-            <input type="radio" name="age" value="10대" id="10대" checked>
-            <label for="10대">10대</label>
-            <input type="radio" name="age" value="20대" id="20대">
-            <label for="20대">20대</label>
-            <input type="radio" name="age" value="30대" id="30대">
-            <label for="30대">30대</label>
-            <input type="radio" name="age" value="40대" id="40대">
-            <label for="40대">40대</label>
-            <input type="radio" name="age" value="50대" id="50대">
-            <label for="50대">50대</label>
-            <input type="radio" name="age" value="60대이상" id="60대이상">
-            <label for="60대이상">60대이상</label>
-        </section>
-        
-        <section>
-            <h2>원하는 강의(복수응답가능합니다.)</h2>
-            <input type="checkbox" name="class" id="html" value="html" checked>
-            <label for="html">html</label>
-            <input type="checkbox" name="class" id="javascript" value="javascript">
-            <label for="javascript">javascript</label>
-            <input type="checkbox" name="class" id="css" value="css">
-            <label for="css">css</label>
-        </section>
-        <section>
-            <textarea name="text" id="textarea" cols="200" rows="15" placeholder="하고 싶은 말을 써주세요 :&#41;" style="resize: none;"></textarea>
-            
-            <button>제출</button>
-        </section>
+        <input type="radio" name="age" value="10대" id="10대" checked />
+        <label for="10대">10대</label>
+        <input type="radio" name="age" value="20대" id="20대" />
+        <label for="20대">20대</label>
+        <input type="radio" name="age" value="30대" id="30대" />
+        <label for="30대">30대</label>
+        <input type="radio" name="age" value="40대" id="40대" />
+        <label for="40대">40대</label>
+        <input type="radio" name="age" value="50대" id="50대" />
+        <label for="50대">50대</label>
+        <input type="radio" name="age" value="60대이상" id="60대이상" />
+        <label for="60대이상">60대이상</label>
+      </section>
+
+      <section>
+        <h2>원하는 강의(복수응답가능합니다.)</h2>
+        <input type="checkbox" name="class" id="html" value="html" checked />
+        <label for="html">html</label>
+        <input
+          type="checkbox"
+          name="class"
+          id="javascript"
+          value="javascript"
+        />
+        <label for="javascript">javascript</label>
+        <input type="checkbox" name="class" id="css" value="css" />
+        <label for="css">css</label>
+      </section>
+      <textarea
+        name="text"
+        id="textarea"
+        placeholder="하고 싶은 말을 써주세요 :&#41;"
+        style="resize: none"
+      ></textarea>
+      <p class="container">
+        <button>제출</button>
+      </p>
+      <br>
     </main>
-</body>
+  </body>
 </html>

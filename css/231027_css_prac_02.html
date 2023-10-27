@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 1800px;
+        }
+        div.border {
+        width: 10vw;
+        height: 10vw;
+        background-color: aqua;
+
+        border-width: 10px;
+        border-style: solid;
+        border-color: rgb(83, 90, 90);
+        border-top-style: dashed;
+        border-left-style: groove;
+        border-right-style: none;
+        border-bottom-style: double;
+        border-radius: 50% 50% 0 0;
+      }
+      hr {
+        margin: 3rem;
+      }
+
+      .box-sizing {
+        width: 100px;
+        height: 100px;
+        padding: 20px;
+        border: 15px solid red;
+        background-color: orange;
+        box-sizing: content-box;
+      }
+
+      div.box-sizing.new {
+        box-sizing: border-box;
+      }
+
+      .practice2 {
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+      }
+
+      .practice2:hover {
+        display: none;
+      }
+    </style>
+</head>
+<body>
+    <div class="border"></div>
+
+    <hr>
+
+    <!-- box-sizing -->
+
+    <div class="box-sizing"></div>
+    <hr>
+    <div class="box-sizing new"></div>
+
+    <hr>
+
+    <div class="practice2"></div>
+</body>
+</html>
