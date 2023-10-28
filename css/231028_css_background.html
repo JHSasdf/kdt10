@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 2000px;
+      }
+      div {
+        background-color: orange;
+        width: 500px;
+        height: 600px;
+        border: 1px solid;
+      }
+
+      .background-img {
+        background-image: url("https://item.kakaocdn.net/do/d84248170c2c52303db27306a00fb861f604e7b0e6900f9ac53a43965300eb9a");
+        /* 1. background-repeat */
+        background-repeat: repeat;
+        background-repeat: repeat-x;
+        background-repeat: repeat-y;
+        background-repeat: no-repeat;
+
+        /* background-position */
+        background-position: left;
+        background-position: left top;
+        background-position: center;
+        background-position: 10px 100px; /* x축, y축 하나만 넣으면 x축값만 설정됨*/
+        background-position-x: 50px;
+
+        /* background-size*/
+        background-size: 100px;
+        background-size: 100px 200px;
+        background-size: cover; /* 큰 pixel 기준으로 담음 */
+        background-size: contain; /* 작은 pixel 기준으로 담음 */
+
+        /* background-attachment: fixed; */
+      }
+      .background-attachment {
+        /* background-attachment */
+        width: 300px;
+        height: 300px;
+        background-image: url("https://item.kakaocdn.net/do/d84248170c2c52303db27306a00fb861f604e7b0e6900f9ac53a43965300eb9a");
+        /* background-repeat: no-repeat;
+        background-position: 20px 700px; */
+        overflow: scroll;
+        background-attachment: local;
+        /* default값 */
+        background-attachment: scroll;
+        /* 스크롤을 하면 백그라운드 이미지도 같이 스크롤 되기 때문에 스크롤을 해도 움직이지 않는 것처럼 보임*/
+        background-attachment: fixed;
+        /* 뷰포트 기준으로 고정, 내부 스크롤을 하면 scroll과 같은 이유로 움직이지 않지만, 외부 스크롤을 하면 움직임*/
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background-img"></div>
+
+    <div class="background-attachment">
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum, ad. Vel
+      quod earum est enim, facere eius, officia quas aspernatur, facilis sint ea
+      magni doloribus nobis? Tempora animi quae eos. Cum architecto accusamus
+      sapiente minus modi iure voluptatum accusantium in aut repellendus hic
+      nulla, at est pariatur perferendis corporis excepturi veritatis qui
+      blanditiis vitae illo veniam unde? Consequatur, deleniti sed. Molestiae
+      debitis iste fugiat. Hic illum eius voluptates deserunt, praesentium
+      aspernatur debitis corporis nobis deleniti minima ea, excepturi accusamus
+      explicabo distinctio adipisci quam doloribus dolorem quia placeat
+      architecto voluptatibus. At! Voluptatem repellat vel est recusandae
+      reprehenderit nihil, consequatur minima perspiciatis animi quam labore
+      deleniti iste soluta iusto quidem saepe dolor odit harum quaerat nesciunt.
+      Eaque quae saepe praesentium iure ad!
+    </div>
+  </body>
+</html>

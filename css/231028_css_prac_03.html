@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 500px;
+        height: 500px;
+        display: flex;
+        background-color: rgb(175, 108, 238);
+      }
+
+      .container2 {
+        flex-direction: row-reverse;
+      }
+
+      .container3 {
+        flex-direction: column;
+      }
+
+      .content {
+        border: 1px solid;
+        box-sizing: border-box;
+        width: 100px;
+        height: 100px;
+        background-color: rgb(104, 104, 167);
+      }
+
+      hr {
+        margin: 3rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content"></div>
+      <div class="content"></div>
+      <div class="content"></div>
+    </div>
+    <hr />
+    <div class="container container2">
+      <div class="content"></div>
+      <div class="content"></div>
+      <div class="content"></div>
+    </div>
+    <hr />
+    <div class="container container3">
+      <div class="content"></div>
+      <div class="content"></div>
+      <div class="content"></div>
+    </div>
+    <hr />
+    <div style="display: flex; gap: 0 2rem">
+      <div class="container" style="flex-wrap: nowrap">
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+      </div>
+      <div class="container" style="flex-wrap: wrap">
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+      </div>
+    </div>
+    <hr />
+    <div style="display: flex; gap: 0 2rem">
+      <div
+        class="container"
+        style=" align-items: center"
+      >
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+      </div>
+
+      <div
+        class="container"
+        style="flex-direction: column; justify-content: center; align-items: center"
+      >
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+      </div>
+      
+    </div>
+    <hr>
+    <div style="display: flex; gap: 0 2rem">
+    <div
+        class="container"
+        style=" flex-wrap: wrap; align-items: center; align-content: center;"
+      >
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+      </div>
+
+      <div
+        class="container"
+        style="flex-wrap: wrap; align-items: center; align-content: center; flex-direction: column;"
+      >
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+      </div>
+    </div>
+    <hr>
+    <div style="display: flex; gap: 0 2rem">
+      <div
+        class="container"
+        style="align-items: center; flex-wrap: wrap;"
+      >
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+      </div>
+
+      <div
+      class="container"
+      style=" align-items: center; flex-wrap: wrap; flex-direction: column;"
+    >
+      <div class="content"></div>
+      <div class="content"></div>
+      <div class="content"></div>
+      <div class="content"></div>
+      <div class="content"></div>
+      <div class="content"></div>
+      <div class="content"></div>
+      <div class="content"></div>
+    </div>
+    </div>
+  </body>
+</html>

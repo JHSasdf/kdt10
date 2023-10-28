@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            background-color: green;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            
+
+            /* justtify-content */
+            justify-content: flex-start; /* default값 */
+            /* justify-content: flex-end; */
+            /* justify-content: center; */
+            /* align-items: baseline; */
+        
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+        }
+
+        .item1 {
+            background-color: red;
+        }
+
+        .item2 {
+            background-color: yellow;
+        }
+
+        .item3 {
+            width: 100px;
+            height: 20px;
+            background-color: pink;
+        }
+
+        .item4 {
+            width: 200px;
+            height: 20px;
+            background-color: aqua;
+        }
+
+        .item5 {
+            width: 300px;
+            height: 40px;
+            background-color: coral;
+        }
+    
+        hr {
+            margin: 3rem 0;
+        }
+
+        .align-items {
+            align-items: flex-end;
+            align-items: center;
+            align-content: flex-start;
+            align-content: flex-end;
+            align-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item1"></div>
+        <div class="item2"></div>
+        <div class="item1"></div>
+        <div class="item2"></div>
+        <div class="item1"></div>
+        <div class="item2"></div>
+    </div>
+<hr>
+    <div class="container align-items">
+        <div class="item3">fsfsf</div>
+        <div class="item4">svsvd</div>
+        <div class="item5">vdvd</div>
+        <div class="item3">fsfsf</div>
+        <div class="item4">svsvd</div>
+        <div class="item5">vdvd</div>
+    </div>
+</body>
+</html>
