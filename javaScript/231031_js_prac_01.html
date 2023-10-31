@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script defer>
+      let colors = [
+        "red",
+        "orange",
+        "black",
+        "green",
+        "blue",
+        "navy",
+        "purple",
+      ];
+      console.log(colors);
+      console.log("index 2 is...", colors[2]);
+      colors.push("Color That I like Most");
+      console.log(colors);
+      console.log("index of black is...", colors.indexOf("black"));
+      console.log(colors.reverse());
+        
+      let mySelf = {
+        name: 'jihunSun',
+        age: 25,
+        married: false,
+        sayHello: function() {
+            return 'HELLO GUYS!';
+        }
+      }
+
+      console.log(mySelf);
+      console.log('function execute --',mySelf.sayHello());
+
+    
+      console.log(`${typeof(1)} isn't ${typeof('2')} data type.`);
+      console.log('Typeof를 boolean이나 null에 사용하면,',typeof(true), '나',typeof(null), '결과를 얻을 수 있습니다.');
+
+        let mathScore = '77';
+        let engScore = '88';
+
+        let avgScore = (Number(mathScore) + Number(engScore)) / 2;
+        
+        console.log(avgScore);
+    </script>
+  </head>
+  <body></body>
+</html>

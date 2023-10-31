@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 자료형
+        - 기본 자료형 : string, number, boolean, null, undefined
+        - 객체 자료형 : array, object */
+
+        let myName = '길동이';
+        let email = 'gildong@naver.com';
+        let city = '서울';
+        
+        console.log('my name is...', myName, '임미다.');
+        console.log('my name is...' + myName + '임미다.');
+        console.log(`my name is...${myName}임미다.`);
+
+        let gildong = `my name is...${myName}임미다.`;
+        console.log(gildong);
+
+        // number
+        let number = 123;
+        let opacity = 0.7;
+        console.log(number);
+        console.log(opacity);
+
+        // NaN : not a number
+        console.log('apple' - 3); //NaN
+        console.log('123' - 3); // console.log에서 number값으로 형변환 해서 120 출력.
+
+        // boolean
+        let checked = true;
+        let isshowed = false;
+        console.log(checked);
+        console.log(isshowed);
+        
+        // undefined: 값을 할당 안했을 때
+        let undef;
+        console.log(undef);
+
+        // null: 의도된 빈 값.
+        let empty = null;
+        console.log(empty);
+
+        // array: 배열 데이터
+        /* 사용 가능 property, method
+            array.length, array.push(value), array.pop(), array.unshift(추가할 값), array.shift(), array.indexOf(찾을 값), array.includes(찾을 값)*/
+            let datas = [1, 'juliet', false, null, undefined]
+            console.log(`index 1 is ... ${datas[1]}`);
+            console.log(datas);
+
+            let fruits = ['apple', 'orange', 'pineapple', 'grape', 'pineapple'];
+           
+
+            console.log(`index 1 is ... ${fruits[1]}`);
+            console.log(fruits);
+            fruits.push('new Fruit!'); // [last index]에 추가
+            console.log(fruits);
+            fruits.pop(); //  pop last index
+            console.log(fruits);
+            fruits.unshift('real new fruit!'); // [0]에 추가
+            console.log(fruits);
+            fruits.shift(); // [0] 제거
+            console.log(fruits);
+            console.log(fruits.indexOf('pineapple'));
+            console.log(fruits.includes('pineapple'));
+
+        // object
+        let cat = {
+            name: '나비',
+            age: 1,
+            isCude: true,
+            meow: function () {
+                return '냐옹';
+            }
+        }
+        console.log(cat);
+        console.log(cat.meow());
+        console.log(typeof(cat.meow));
+
+        // 형변환
+        let str1 = true;
+        let str2 = 123;
+        let str3 = null;
+
+        console.log(typeof String(str1));
+        console.log(str1.toString(str1));
+        console.log(typeof String(str2));
+        console.log(str2.toString());
+        console.log(typeof String(str3));
+        // console.log(typeof str3.toString());
+
+
+        console.log(Number(true));
+        console.log(Number(false));
+        console.log(Number('1235.23'));
+        
+       
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
