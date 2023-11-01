@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // for (let i = 0 ; i < 10; i += 2) {
+            // 초기화: i를 0으로 셋팅
+            // 조건식: i가 10보다 작을 때
+            // 증감식: i를 2씩 더함
+            
+            // console.log('i : ', i);
+        // }
+
+        const arr = [];
+        // let input = Number(prompt());
+        for (let i = 1; i <= 10000 ; i++) {
+            if (i % 13 === 0 && i % 2 === 1) {
+                arr.push(i);
+            }  
+        }
+        console.log(arr);
+        // for (let i = 2 ; i < 10 ; i++) {
+        //     console.log('--',i,'단--');
+        //     for (let j = 1 ; j < 10 ; j++) {
+        //         console.log(i + ' * ' + j + ' = ' + i*j);
+        //     }
+        // }
+
+        // while문
+     
+
+        let n = Number(prompt())
+        let sum = 0;
+        for (let i = 2; i <= n ; i++) {
+            if (i % 2 === 0 || i % 3 === 0) {
+                sum += i;
+            }
+        }
+        console.log('for: ' + sum);
+
+        sum = 0;
+        let startNum = 2;
+        while (startNum <= n) {
+            if (startNum % 2 === 0 || startNum % 3 === 0 ) {
+                sum += startNum;
+            }
+            startNum++;
+        }
+        console.log('while: ' + sum);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

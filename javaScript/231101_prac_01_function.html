@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      button {
+        margin: 0rem 1rem;
+      }
+    </style>
+    <script defer>
+      function multifly(x, y) {
+        return Number(x) * Number(y);
+      }
+
+      console.log(multifly(3, 7));
+      console.log(multifly(2, 2));
+
+      function square(x) {
+        console.log(Number(x) ** 2);
+      }
+      square(4);
+      square(11);
+      square(5);
+      function add() {
+        num1 = Number(prompt());
+        num2 = Number(prompt());
+        alert(num1 + num2);
+      }
+
+      function sub() {
+        num1 = Number(prompt());
+        num2 = Number(prompt());
+        alert(num1 - num2);
+      }
+
+      function divide() {
+        num1 = Number(prompt());
+        num2 = Number(prompt());
+        alert(num1 / num2);
+      }
+
+      function mul() {
+        num1 = Number(prompt());
+        num2 = Number(prompt());
+        alert(num1 * num2);
+      }
+      
+
+    </script>
+    <script src="/app.js" defer></script>
+
+  </head>
+  <body>
+    <button onclick="add()">add</button>
+    <button onclick="sub()">sub</button>
+    <button onclick="divide()">divide</button
+    ><button onclick="mul()">mul</button>
+  </body>
+</html>
