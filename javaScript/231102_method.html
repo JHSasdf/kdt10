@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>method</title>
+    <script>
+        // 문자열 관련 메소드
+        let str = ' Happy day~! ';
+        console.log(str.length);
+
+        console.log(str.toUpperCase());
+        console.log(str.toLowerCase());
+        console.log(str.indexOf('p',4)); // 2번쨰 parameter: from
+        console.log(str.lastIndexOf('p')); // 2번째 parameter: to
+
+        console.log(str.slice(3,5));
+        console.log(str.slice(-4));
+
+        // replace
+        console.log(str.replace('p', 'a'));
+        console.log(str.replaceAll('a', 'p'));
+        console.log(str.repeat(5));
+
+        console.log(str.split(''));
+        console.log(str.split(' '));
+        arr = ['s','d'];
+        console.log(arr.includes('s'));
+
+        // join : join 안의 문자열 기준으로 문자열로 병합, 배열을 문자열로 만들어줌.
+        console.log(arr.join(''));
+        console.log(arr.join('&'));
+
+        // 문자열 뒤집고 싶을때? 문자열 메소드에는 reverse가 없음. 그래서 문자열을 배열로 -> 배열 뒤집기 -> 문자열로 바꾸기
+        let hello = 'hello!~';
+        console.log(hello.split('').reverse().join(''));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

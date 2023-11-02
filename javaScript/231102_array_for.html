@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array for</title>
+    <script>
+        let fruits = ['apple', 'banana', 'orange', 'melon', 'starfruit'];
+
+        fruits.forEach((val, index, arr) => {
+            console.log(val);
+            console.log(index);
+            console.log(arr);
+        });
+
+        let numbers = [1, 2, 3, 4, 5];
+
+        // filter: array 값을 iteration 하면서 해당 function 값에 해당하는 값을 하나씩 return 한다.
+        let arr = numbers.filter(function (num) {
+            return num > 3;
+        })
+        console.log(arr);
+
+        let length5Fruit = fruits.filter(function (fruit) {
+            return fruit.length === 5;
+        })
+        console.log(length5Fruit);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
