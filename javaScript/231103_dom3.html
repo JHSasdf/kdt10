@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 다른 노드 접근하기</title>
+</head>
+<body>
+    <div id="container">
+        <div class="box" id="green">1</div>
+        sfsfsf
+        <!-- 주석 -->
+        <div class="box" id="red">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <input type="text" id="userName" />
+      </div>
+      <button onclick="getParent()">getParent</button>
+      <button onclick="pElSibling()">getPreviousElementSibling</button>
+      <button onclick="pSibling()">getPreviousSibling</button>
+
+      <script>
+        let container = document.getElementById('container');
+        let greenBox = document.getElementById('green');
+        let redBox = document.getElementById('red');
+
+        console.log('children :', container.children);
+
+        function getParent() {
+            console.log(greenBox.parentNode);
+            console.log(greenBox.parentElement);
+        }
+
+        function pElSibling() {
+            console.log(redBox.previousElementSibling);
+        }
+        function pSibling() {
+            console.log(redBox.previousSibling);
+            // 주석도 탐지함, 주석도 하나의 노드로 취급함!!!!!
+        }
+      </script>
+</body>
+</html>

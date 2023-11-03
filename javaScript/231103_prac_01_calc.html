@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label for="val1">값1</label>
+    <input type="text" id="val1" /> <br />
+    <label for="val2">값2</label>
+    <input type="text" id="val2" /> <br />
+    <label for="val3">값3</label>
+    <input type="text" id="val3" /> <br />
+    <label for="val4">값4</label>
+    <input type="text" id="val4" /> <br />
+    <button onclick="calc()">계산하기</button>
+    <button onclick="init()">초기화</button>
+
+    <script>
+        let val1 = document.getElementById("val1");
+        let val2 = document.getElementById("val2");
+        let val3 = document.getElementById("val3");
+        let val4 = document.getElementById("val4");
+  
+        function calc() {
+          if (val3.value == "+") {
+            val4.value = Number(val1.value) + Number(val2.value);
+          } else if (val3.value == "-") {
+            val4.value = Number(val1.value) - Number(val2.value);
+          } else if (val3.value == "*") {
+            val4.value = Number(val1.value) * Number(val2.value);
+          } else if (val3.value == "/") {
+            val4.value = Number(val1.value) / Number(val2.value);
+          } else {
+            val4.value = "invaild value in 계산하기";
+          }
+        }
+  
+        function init() {
+          val1.value = "";
+          val2.value = "";
+          val3.value = "";
+          val4.value = "";
+        }
+      </script>
+
+    <hr style="margin: 3rem 0;">
+
+    <label for="writer"> 작성자</label>
+    <input type="text" id="writer"> <br>
+    <label for="context">내용 </label>
+    <input type="text" id="context" style="width: 60%;">
+    <br><br><br>
+    <button onclick="startWrite()">작성</button>
+    <br><br><br>
+    <table border="2px" cellspacing="0" id="table">
+        <tr>
+            <th>번호</th>
+            <th>작성자</th>
+            <th>내용</th>
+            <th>작성일</th>
+        </tr>
+    </table>
+
+  </body>
+  
+  <script>
+    let tableElement = document.getElementById('table');
+    let writerElement = document.getElementById('writer');
+    let contextElement = document.getElementById('context');
+
+    let index = 1;
+    
+
+    function startWrite() {
+        let writer = writerElement.value;
+        let context = contextElement.value;
+        let tr = document.createElement('tr');
+        let td1 = document.createElement('td');
+        let td2 = document.createElement('td');
+        let td3 = document.createElement('td');
+        let td4 = document.createElement('td');
+
+        const date = new Date();
+        const now = date.getFullYear() + '-' + (date.getMonth() + 1) + ' - ' + date.getDay() + ' ' + date.getHours() + ': ' + date.getMinutes();
+        td1.textContent = index++;
+        td2.textContent = writer;
+        td3.textContent = context;
+        td4.textContent = now;
+        
+        tr.append(td1);
+        tr.append(td2);
+        tr.append(td3);
+        tr.append(td4);
+
+        tableElement.append(tr);
+
+        writerElement.value = '';
+        contextElement.value = '';
+        
+
+    }
+    
+</script>
+</html>

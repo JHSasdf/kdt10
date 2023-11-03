@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>요소 추가, 삭제</title>
+  </head>
+  <body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li id="li">3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+    <button onclick="createNode()">createNode</button>
+    <button onclick="appendNode()">appendNode</button>
+    <button onclick="appendChildNode()">appendChildNode</button>
+    <button onclick="prependNode()">prependNode</button>
+    <button onclick="beforeNode()">beforeNode</button>
+    <button onclick="afterNode()">afterNode</button>
+    <button onclick="removeNode()">removeNode</button>
+    <button onclick="removeChildNode()">removeChildNode</button>
+
+    <script defer>
+      let count = 1;
+      let ul = document.querySelector("ul");
+      function createNode() {
+        // 노드 만들기
+        let li = document.createElement("li");
+
+        li.innerText = "새로 추가된 리스트" + count++;
+        console.log("li:" + li);
+      }
+
+      function appendNode() {
+        let li = document.createElement("li");
+        li.innerText = "새로 추가된 리스트" + count++;
+        ul.append(li);
+        ul.append('text');
+      }
+
+      function appendChildNode() {
+        let li = document.createElement("li");
+        li.innerText = "새로 추가된 리스트" + count++;
+        ul.appendChild(li);
+        ul.appendChild('text'); // not executive
+      }
+
+      function prependNode() {
+        let li = document.createElement("li");
+        li.innerText = "새로 추가된 리스트" + count++;
+
+        let ul = document.querySelector('ul');
+        ul.prepend(li);
+      }
+
+      function beforeNode() {
+        let li = document.createElement("li");
+        li.innerText = "새로 추가된 리스트" + count++;
+        let standard = document.getElementById('li');
+        standard.before(li);
+      }
+
+      function afterNode() {
+        let li = document.createElement("li");
+        li.innerText = "새로 추가된 리스트" + count++;
+        let standard = document.getElementById('li');
+        standard.after(li);
+      }
+
+      // 선택한 요소 삭제
+      function removeNode() {
+        let standard = document.querySelector('#li');
+        standard.remove();
+      }
+
+      function removeChildNode() {
+        ul = document.querySelector('ul');
+        let standard = document.getElementById('li')
+        ul.removeChild(standard);
+      }
+    </script>
+  </body>
+</html>

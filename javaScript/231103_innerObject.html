@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>표준 내장 객체</title>
+    <script>
+      let now = new Date();
+      console.log(now);
+      console.log(now.getFullYear() + "년");
+      console.log(now.getMonth() + 1 + "월"); // getMonth의 경우 0 ~ 11까지 index로 반환함
+      console.log(now.getDate() + "일");
+      console.log(now.getMilliseconds() + "밀리초");
+      console.log(now.getDay() + "요일"); // 0 = sunday, 6 = saturday
+
+      function isWeekend() {
+        today = now.getDay();
+        if (today > 0 && today < 6) {
+          return "평일";
+        } else {
+          return "주말";
+        }
+      }
+
+      console.log(isWeekend());
+
+      switch (now.getDay()) {
+        case 0:
+        case 6:
+          console.log("주말");
+        default:
+          console.log("평일");
+      }
+
+      // 삼항연산자
+      now.getDay === 0 || now.getDay === 6 ? console.log('주말') : console.log('평일');
+
+      // 2. Math 객체
+
+      console.log(Math.PI);
+      console.log(Math.E);
+      console.log(Math.SQRT2);
+      console.log(Math.LN2)
+      console.log(Math.LN10);
+
+      console.log(Math.min(3,5,78,6,6,5));
+      console.log(Math.round(5.532*100)/100); // 정수까지만 가능하기 때문에 소수점 몇번쨰까지 출력하려면 이런식으로 해야하지 않을까...?
+      console.log((123.15).toFixed(1)); // 위 식의 Mehtod, 소수점 1번째 자리까지 나타냄. 그 이하는 반올림.
+
+      console.log(Math.floor(Math.random() * 100)+1);
+    </script>
+  </head>
+  <body></body>
+</html>

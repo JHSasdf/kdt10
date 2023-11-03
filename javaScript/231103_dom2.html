@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .box1 {
+        background-color: green;
+      }
+
+      .d-none {
+        opacity: 0.3;
+      }
+
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box" id="green">1</div>
+        <div class="box" id="red">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <input type="text" id="userName" />
+      </div>
+      <button onclick="addClass()">addClass</button>
+      <button onclick="removeClass()">removeClass</button>
+      <button onclick="containsClass()">containsClass</button>
+      <button onclick="toggleClass()">toggleClass</button>
+      <input type="text" id="userName">
+
+      <!-- 클래스 관련 메소드 -->
+      <script>
+        let greenBox = document.getElementById('green')
+        function addClass() {
+            greenBox.classList.add('box1');
+            console.log(greenBox.classList);
+        }
+
+        function removeClass() {
+            greenBox.classList.remove('box1');
+            console.log(greenBox.classList);
+        }
+
+        function containsClass() {
+            console.log(greenBox.classList.contains('box1'));
+        }
+        function toggleClass() {
+            console.log(greenBox.classList.toggle('d-none'));
+        }
+      </script>
+      
+      <!-- 속성 변경 메소드 -->
+      <script>
+        let inputEl = document.getElementById('userName')
+        inputEl.setAttribute('placeholder','name');
+        inputEl.placeholder = 'name2'; // 예외 존재
+
+        inputEl.style = "outline: none";
+        inputEl.style.backgroundColor = 'skyblue';
+
+      </script>
+</body>
+</html>
