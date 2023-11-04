@@ -49,8 +49,8 @@
 
     <label for="writer"> 작성자</label>
     <input type="text" id="writer"> <br>
-    <label for="context">내용 </label>
-    <input type="text" id="context" style="width: 60%;">
+    <label for="content">내용 </label>
+    <input type="text" id="content" style="width: 60%;">
     <br><br><br>
     <button onclick="startWrite()">작성</button>
     <br><br><br>
@@ -68,37 +68,53 @@
   <script>
     let tableElement = document.getElementById('table');
     let writerElement = document.getElementById('writer');
-    let contextElement = document.getElementById('context');
+    let contentElement = document.getElementById('content');
 
     let index = 1;
-    
+
+    function mkTdElement() {
+      return document.createElement('td');
+    }
 
     function startWrite() {
         let writer = writerElement.value;
-        let context = contextElement.value;
+        let content = contentElement.value;
         let tr = document.createElement('tr');
-        let td1 = document.createElement('td');
-        let td2 = document.createElement('td');
-        let td3 = document.createElement('td');
-        let td4 = document.createElement('td');
-
+        let td1 = mkTdElement();
+        let td2 = mkTdElement();
+        let td3 = mkTdElement();
+        let td4 = mkTdElement();
+       
         const date = new Date();
-        const now = date.getFullYear() + '-' + (date.getMonth() + 1) + ' - ' + date.getDay() + ' ' + date.getHours() + ': ' + date.getMinutes();
+        const now = date.getFullYear() + '-' + (date.getMonth() + 1) + ' - ' + date.getDate() + ' ' + date.getHours() + ': ' + date.getMinutes();
         td1.textContent = index++;
         td2.textContent = writer;
-        td3.textContent = context;
+        td3.textContent = content;
         td4.textContent = now;
         
-        tr.append(td1);
-        tr.append(td2);
-        tr.append(td3);
-        tr.append(td4);
-
+        tr.append(td1, td2, td3, td4);
+    
         tableElement.append(tr);
 
-        writerElement.value = '';
-        contextElement.value = '';
+        // writerElement.value = '';
+        // contentElement.value = '';
         
+        let inputs = document.querySelectorAll('input');
+        console.log(inputs)
+        console.log(inputs.length);
+        // for (input of inputs) {
+        //   console.log(input);
+        //   input.value = '';
+        // }
+        console.log(inputs.keys());
+        for (input in inputs) {
+          console.log(input);
+          inputs[input].value = '';
+        }
+        for (const key of inputs.keys()) {
+          console.log(key)
+        }
+        // console.log(inputs.length);
 
     }
     

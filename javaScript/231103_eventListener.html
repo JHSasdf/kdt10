@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 500px;
+            height: 1000px;
+            overflow: scroll;
+        }
+        .in-container {
+            width: 1000px;
+            height: 3000px;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+        }
+        .div1 {
+            background-color: yellowgreen;
+        }
+
+        .div2 {
+            background-color: violet;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="in-container"></div>
+    <div class="box div1">div1</div>
+    <div class="box div2">div2</div>
+    <input type="text">
+</div>
+    <script>
+        let div1 = document.querySelector('.div1');
+        let input = document.querySelector('input');
+        const container = document.querySelector('.container');
+        div1.addEventListener('click', function(event) {
+           console.log(event.target);
+        })
+
+        let div2 = document.querySelector('.div2');
+        div2.addEventListener('mouseover', function(event) {
+            event.target.style.backgroundColor = 'red';
+            event.target.textContent = 'it\s just hovered!'
+        })
+
+ 
+        div2.addEventListener('mouseout', function(event) {
+            event.target.style.backgroundColor = 'violet';
+            event.target.textContent = 'div2'
+        })
+
+        input.addEventListener('focus', function(event) {
+            event.target.style.backgroundColor = 'violet';
+            
+        })
+
+        input.addEventListener('keydown', function(event) {
+            console.log(event);
+            console.log(event.key);
+            event.target.style.backgroundColor = 'red';
+        })
+
+        container.addEventListener('scroll', function(event) {
+            console.log('컨테이너 스크롤!')
+        })
+    </script>
+</body>
+</html>
