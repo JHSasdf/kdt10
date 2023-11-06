@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      section {
+        margin: 3rem auto;
+        width: 30rem;
+        height: 30rem;
+        border: 1px solid;
+      }
+      img {
+        display: none;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* .mkblock {
+        display: block;
+      } */
+      div {
+        text-align: center;
+      }
+    </style>
+   
+  </head>
+  <body>
+    <section>
+      <img class="사과" src="/imgs/apple.png" alt="photo of apple" />
+      <img class="바나나" src="/imgs/banana.png" alt="photo of banana" />
+      <img class="포도" src="/imgs/grape.png" alt="photo of grape" />
+      <img class="복숭아" src="/imgs/peach.png" alt="photo of peach" />
+    </section>
+    <div>
+    <button>사과</button>
+    <button>바나나</button>
+    <button>포도</button>
+    <button>복숭아</button>
+    </div>
+    <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    //   const buttons = document.querySelectorAll('button');
+        console.log($('button'));
+        console.log($('section'));
+        console.log($('span'));
+        // $('button').text('ada');
+      for (const button of $('button')) {
+          button.addEventListener('click', makeBlock)
+      }
+      function makeBlock(event) {
+          const name = event.target.textContent
+          const real = document.querySelector(`.${name}`)
+        //   real.classList.toggle('mkblock')
+
+        // for (const img of $('img')) {
+        //     img.style.display = 'none';
+        // }
+        $('img').css('display', 'none');
+        real.style.display = 'block';
+      }
+  </script>
+  
+  </body>
+</html>

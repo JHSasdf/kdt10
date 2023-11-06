@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery class</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+    <style>
+        .fs-50 {
+            font-size: 50px;
+        }
+
+        .color-blue {
+            background-color: blue;
+        }
+
+        .color-skyblue {
+            background-color: skyblue;
+        }
+       .pink {
+        color: pink;
+       }
+    </style>
+
+    <script>
+       
+        function addClass() {
+            $('#hi').addClass('fs-50');
+        }
+        function removeClass() {
+            // $('#hi').removeClass(); // 빈 값 넣을 시 class 모두 제거
+            $('#hi').removeClass('fs-50');
+        }
+
+        function hasClass() {
+            // boolean값 반환
+            console.log($('#hi').hasClass('fs-50'));
+        }
+
+        function toggleClass() {
+            $('#hi').toggleClass('fs-50');
+            $('#hi').toggleClass('pink');
+        }
+
+        function switchClass() {
+            // 바꿀 class, 바뀔 class, 바꾸는 데 걸리는 시간 
+            $('#hi').switchClass('color-blue', 'color-skyblue', 2);
+        }
+    </script>
+</head>
+<body>
+    <p id="hi" class="color-blue">안녕하세요!</p>
+    <button onclick="addClass()">클래스 추가</button>
+    <button onclick="removeClass()">클래스 삭제</button>
+    <button onclick="hasClass()">클래스 유무 확인</button>
+    <button onclick="toggleClass()">클래스 토글</button>
+    <button onclick="switchClass()">switch Class</button>
+</body>
+</html>

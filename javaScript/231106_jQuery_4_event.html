@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+      integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+   
+    <div class="container">
+      <input type="text" />
+      <button>버튼</button>
+    </div>
+
+    <script>
+        // load: window 창이 load되면 실행
+        $(window).on("load", function () {
+          $(".container").append("<h2>안녕 load</h2>");
+        });
+        console.log($(window));
+  
+        console.log($(document));
+        // ready : dom tree 생성 완료 된 후 function 실행
+        $(document).ready(function () {
+          $(".container").append("<h2>Hi, ready</h2>");
+        });
+  
+        // ready 없어도 가능, ready와 동일
+        $(function () {
+          $(".container").append("<h2>Hi, ready2</h2>");
+        });
+
+        // $('button').click(function() {
+        //     alert('btn 클릭')
+        // })
+
+        $('button').on('click', function() {
+            alert('on으로 btn클릭')
+        })
+
+        $('button').mouseover(function() {
+            alert('마우스오버')
+        })
+
+        $('input').keydown(function(event) {
+            console.log(event.target);
+            console.log(event.key);
+            console.log('this: ' + this);
+        })
+      </script>
+    
+  </body>
+</html>
