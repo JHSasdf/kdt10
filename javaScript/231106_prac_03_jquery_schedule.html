@@ -30,9 +30,9 @@
 
   <body>
     <div>
-      날짜 : <input type="text" id="date" /> <br />
+      날짜 : <input type="text" id="date" readonly /> <br />
       내용 : <input type="text" id="content" /> <br />
-      <button type="button" >작성</button> <br />
+      <button type="button">작성</button> <br />
     </div>
     <div style="font-size: 2em; color: green; text-align: center">
       2022년 7월
@@ -108,18 +108,42 @@
     </table>
 
     <script>
-        $('button').on('click', function() {
-            for (dateElement of $('p')) {
-                if (dateElement.textContent === $('#date').val()) {
-                    dateElement.classList.toggle('standard');
-        
-                    $('.standard').after(`<p>${$('#content').val()}</p>`);
-                    dateElement.classList.toggle('standard');
-                    $('#date').val("")
-                    $('#content').val("")
-                }
-            }
-        })
+      let dates = $("p");
+      let standard;
+      let date = document.getElementById('date');
+      $(date).val('제빵왕 김탁구');
+      dates.click(function (event) {
+        $("#date").val($(this).text());
+
+        standard = this;
+        console.log(standard);
+        console.log(event.target);
+        // this: event.target
+        // 거기에다가 달러표시 붙여주면 jQuery method 사용 가능
+      });
+
+      // $('button').on('click', function() {
+      //     for (dateElement of $('p')) {
+      //         if (dateElement.textContent === $('#date').val()) {
+      //             dateElement.classList.toggle('standard');
+
+      //             $('.standard').after(`<p>${$('#content').val()}</p>`);
+      //             dateElement.classList.toggle('standard');
+      //             $('#date').val("")
+      //             $('#content').val("")
+      //         }
+      //     }
+      // })
+
+      $("button").click(function () {
+        $(standard).after(`<p>${$("#content").val()}</p>`);
+    
+        console.log($("#content").val());
+        // console.log($("input")[0]);
+        // console.log($("input")[1]);
+        $("#date").val("");
+        $("#content").val("");
+      });
     </script>
   </body>
 </html>
