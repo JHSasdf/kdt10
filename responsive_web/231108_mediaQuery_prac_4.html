@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/837ff3adc1.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        height: 100px;
+        z-index: 100;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      header .inner {
+        background-color: lightblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+
+      header .inner .logo {
+        position: relative;
+        right: 200px;
+        color: white;
+        font-size: 2rem;
+      }
+
+      header .inner .menu {
+        display: flex;
+      }
+
+      header .inner .menu li {
+        margin: 0 10px;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      /* 태블릿 pc  */
+      @media screen and (768px <= width <= 1024px) {
+        header {
+          height: 60px;
+        }
+        header .inner {
+          justify-content: flex-start;
+        }
+
+        header .inner .logo,
+        header .inner .menu li {
+          position: static;
+          margin: 0.5rem 0;
+          /* line-height 이용해도 가능 */
+        }
+
+        header .inner,
+        header .inner .menu {
+          flex-direction: column;
+          width: 100%;
+          text-align: center;
+
+          /* 아래도 가능 */
+          /* align-items: center; */
+        }
+
+        header .inner .menu {
+          background-color: rgb(231, 253, 253);
+        }
+      }
+
+      /* 모바일 */
+      @media screen and (max-width: 480px) {
+
+        header {
+          height: 45px;
+        }
+        header .inner {
+          justify-content: flex-start;
+          background-color: palevioletred;
+        }
+
+        header .inner .logo{
+          position: static;
+          line-height: 45px;
+          /* line-height 이용해도 가능 */
+        }
+
+        header .inner .menu li {
+            margin: 0.5rem 0;
+        }
+        header .inner,
+        header .inner .menu {
+          flex-direction: column;
+          width: 100%;
+          text-align: center;
+
+          /* 아래도 가능 */
+          /* align-items: center; */
+        }
+
+        header .inner .menu {
+          background-color: pink;
+        }
+      }
+      
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="inner">
+        <div class="logo">
+          <i class="fa-solid fa-igloo"></i>
+        </div>
+        <ul class="menu">
+          <li>메뉴1</li>
+          <li>메뉴2</li>
+          <li>메뉴3</li>
+          <li>메뉴4</li>
+        </ul>
+      </div>
+    </header>
+  </body>
+</html>
