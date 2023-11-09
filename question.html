@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        const obj = {
+            name : 'jihun',
+            age : 26,
+            married : 'not married',
+            statement : 'I\'m starving'
+        }
+        let word = 'married';
+        console.log(obj.name);
+        console.log(obj.age);
+        console.log('.그냥 호출' + obj.married);
+        console.log('[] 그냥 호출' +obj['married']);
+        console.log('. 변수 생성' + obj.word);
+        console.log('[] 변수 생성' + obj[word]);
+        console.log(obj.statement);
+
+
+        for (const key in obj) {
+            console.log('forin & . :' + obj.key);
+            console.log('forin & [] :' + obj[key]);
+        }
+
+        const arr = ['name', 'age', 'married', 'statement'];
+        for (const key of arr) {
+            console.log('arr for of & . :' + obj.key);
+            console.log('arr for of & [] :' + obj[key]);
+        }
+        for (let i = 0; i < arr.length; i++) {
+
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -4,6 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+          crossorigin="anonymous"
+        ></script>
     <script
       src="https://kit.fontawesome.com/837ff3adc1.js"
       crossorigin="anonymous"
@@ -12,6 +23,7 @@
       body {
         margin: 0;
         padding: 0;
+        height: 3000px;
       }
 
       header {
@@ -54,16 +66,19 @@
       @media screen and (768px <= width <= 1024px) {
         header {
           height: 60px;
+          
         }
         header .inner {
           justify-content: flex-start;
+          line-height: 60px;
         }
 
-        header .inner .logo,
-        header .inner .menu li {
+        header .inner .logo {
           position: static;
+        }
+
+        header .inner .menu li {
           margin: 0.5rem 0;
-          /* line-height 이용해도 가능 */
         }
 
         header .inner,
@@ -119,7 +134,7 @@
     </style>
   </head>
   <body>
-    <header>
+    <header class="fixed-top">
       <div class="inner">
         <div class="logo">
           <i class="fa-solid fa-igloo"></i>

@@ -1,0 +1,84 @@
+#imgs {
+    width: 50%;
+    margin: 1rem auto;
+}
+
+#imgs img {
+    max-width: 100%;
+}
+
+section{
+    
+    margin: 5rem 0;
+}
+
+img {
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+}
+
+tr a {
+    text-decoration: none;
+    color: rgb(80, 80, 80);
+}
+
+body {
+    
+    font-family: sans-serif;
+}
+
+main {
+    margin: 2rem auto;
+    border: 1px solid rgb(70, 70, 70);
+    border-radius: 3px;
+    width: 90%;
+    box-shadow: 1px 2px 4px rgba(150, 150, 150, 0.6);
+    background-color: rgb(231, 231, 231);
+}
+
+section, textarea {
+    display: block;
+    border: 1px solid rgba(71, 71, 71, 0.7);
+    padding: 0.5rem;
+    border-radius: 5px;
+    width: 70%;
+    margin: 3rem auto;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+textarea {
+    height: 7rem;
+    /* overflow-y: scroll; */
+}
+
+h1 {
+    text-align: center;
+}
+textarea, input {
+    outline-style: none;
+    background-color: rgb(209, 209, 209);
+    font-family: sans-serif;
+}
+
+
+textarea:focus, input:focus {
+    background-color: rgb(192, 192, 192);
+}
+
+label {
+    display: inline-block;
+    width: 4.5rem;
+}
+
+.container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+button {
+    margin-left: -9px;
+}

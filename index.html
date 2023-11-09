@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+//       function solution(n) {
+//         var answer = 0;
+//         strN = String(n);
+//         for (let i = 0; i < strN.length; i++) {
+//           console.log(parseInt(i));
+//           answer += parseInt(strN[i]);
+//         }
+
+//         return answer;
+//       }
+//       solution([1,2,3]);
+
+
+//       function solution(numbers) {
+//     var answer = 45;
+//     let sum = numbers.reduce(function(acc, cur) {
+//         return acc + cur
+//     });
+    
+//     return answer-sum;
+// }
+
+
+// let list = [3, 4, 5, 6 , 7, 8];
+//     console.log(list.reduce(function (acc, cur){
+//         return acc + cur
+//     }));
+//     // 전부 eteration 돌고 반환
+
+//     function rsolution(players, callings) {
+//     for (calling of callings) {
+//         idx = players.indexOf(calling)
+//         players.splice(idx,1);
+//         players.splice(idx-1,0,calling);
+//     }
+//     var answer = players;
+//     return answer;
+// }
+// console.log(rsolution([0,1,2,3,4], [2]));
+
+function solution(players, callings) {
+    let playernames = {};
+    let playerranks = {};
+    let losename = '';
+    players.forEach((player, idx) => {
+        const rank = idx+1;
+        playernames[player] = rank;
+        playerranks[rank] = player;
+        
+    })
+    
+    for (calling of callings) {
+        
+        losename = playerranks[playernames[calling]-1];
+        playernames[calling] -= 1;
+        playernames[losename] += 1;
+        console.log('see this thing: ' + playernames[losename]);
+        playerranks[playernames[calling]] = calling;
+        playerranks[playernames[calling]] = losename;
+        
+        
+       
+    }
+  
+    return Object.values(playerranks);
+}
+console.log(solution(['a','b','c'], ['b']));
+
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
