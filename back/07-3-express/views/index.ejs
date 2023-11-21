@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/asdf/css/index.css">
+    <title>index</title>
+</head>
+<body>
+    <h1>heello ejs! man</h1>
+    <% for (let i = 0; i < 2; i++) { %>
+        <!-- 상대경로는 해당 파일인 index.ejs를 기준으로 -->
+        <%- include(`component/dummy${i}`) %> 
+        <% } %>
+</body>
+</html>
