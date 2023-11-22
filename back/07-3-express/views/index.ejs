@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/asdf/css/index.css">
-    <title>index</title>
-</head>
-<body>
+  <head>
+    <%- include('./component/head', {title: 'index'}) %>
+  </head>
+  <body>
+    <%- include('component/header') %>
     <h1>heello ejs! man</h1>
+    <% for (let btn of btns) { %>
+    <button type="button" class="btn btn-info">
+        <%= btn %>
+    </button>
+    <% } %>
+    
     <% for (let i = 0; i < 2; i++) { %>
-        <!-- 상대경로는 해당 파일인 index.ejs를 기준으로 -->
-        <%- include(`component/dummy${i}`) %> 
-        <% } %>
-</body>
+    <!-- 상대경로는 해당 파일인 index.ejs를 기준으로 -->
+    <%- include(`component/dummy${i}`) %>
+    <% } %>
+    
+    <% if(!isLoggedIn) { %>
+    <h4>아직 로그인을 안했군요!</h4>
+    <% } else { %>
+    <h4>로그인 완료</h4>
+    <% } %>
+  </body>
 </html>
