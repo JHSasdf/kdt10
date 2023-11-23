@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습3</title>
+  </head>
+  <body>
+    <h1>콜백지옥 예시</h1>
+
+    <script>
+      //   setTimeout(function () {
+      //     document.body.style.backgroundColor = "red";
+
+      //     setTimeout(function () {
+      //       document.body.style.backgroundColor = "orange";
+
+      //       setTimeout(function () {
+      //         document.body.style.backgroundColor = "yellow";
+
+      //         setTimeout(function () {
+      //           document.body.style.backgroundColor = "green";
+
+      //           setTimeout(function () {
+      //             document.body.style.backgroundColor = "blue";
+      //           }, 1000);
+      //         }, 1000);
+      //       }, 1000);
+      //     }, 1000);
+      //   }, 1000);
+
+      function color(colorName) {
+        return new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            document.body.style.backgroundColor = colorName;  
+            resolve(colorName);
+            return reject('gg'); // resolve가 위에 있어서 실행되지 않음.
+          }, 1000);
+
+        });
+      }
+
+      async function execute() {
+        try {
+            let msg = await color("red");
+            console.log(msg)
+            msg = await color("orange");
+            console.log(msg);
+            msg = await color("yellow");
+            console.log(msg);
+            msg = await color("green");
+            console.log(msg);
+            msg = await color("blue");
+            console.log(msg);
+        }catch(error) {
+            console.log(error);
+        }
+      }
+      execute();
+    </script>
+  </body>
+</html>
