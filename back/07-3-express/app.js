@@ -30,6 +30,8 @@ app.get('/login', function(req, res) {
 app.get('/register', function(req, res) {
     res.render('register');
 })
+
+
 app.listen(PORT, function() {
     console.log(`server listening on ${PORT}`) // 서버가 열리면 콜백함수 수행
 });

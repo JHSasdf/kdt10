@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form 전송</title>
+  </head>
+  <body>
+    <h1>Form</h1>
+    <h2>get 요청</h2>
+    <form action="/login" method="get">
+      <label for="id">ID</label>
+      <input type="text" name="id" id="id" required minlength="3"/>
+      <label for="pw">PW</label>
+      <input type="password" name="pw" id="pw" required/>
+      <input type="number" name="grade" max="4" placeholder="Grade">
+      <!-- form 태그 안에 있는 button 태그는 type: submit -->
+      <button>제출</button>
+    </form>
+
+    <h2>post 요청</h2>
+    <!-- 메소드가 달라서 액션이 달라도 됨 -->
+    <!-- pattern 속성 : form 요소에 값이 입력되었을 때, 그 입력된 값에 대해 검증 (정규식) required와 같이 쓰임 -->
+    
+    <form action="/login" method="post"> 
+        <label for="id2">ID</label>
+        <input type="text" name="id" id="id2" required
+        pattern="^([a-zA-Z0-9가-힣]){4,10}$" title="아이디는 대소문자, 숫자, 한글로 구성된 4~10자리 문자여야 합니다."/>
+        <label for="pw2">PW</label>
+        <input type="password" name="pw" id="pw2" required
+        pattern="^([a-z0-9]){8,12}$"/>
+        <!-- form 태그 안에 있는 button 태그는 type: submit -->
+        <button>제출</button>
+      </form>
+<!-- js 폼 유효성 검사 -->
+      <form action="/js-form-check" method="post" name="valiForm" onsubmit="return checkForm(this)" target="_blank">
+        <input type="text" name="id" minlength="1" placeholder="ID" title="최소 1글자">
+        <span>우편물 수령장소</span>
+        <input type="checkbox" name="post" value="자택" id="자택">
+        <label for="자택">자택</label>
+        <input type="checkbox" name="post" value="회사" id="회사">
+        <label for="회사">회사</label>
+        <button>제출</button>
+
+        <script>
+            function checkForm(form) {
+                // name으로 찾기 가능
+                // const form = document.forms['valiForm'];
+
+                // this로 보내서 매개변수 받기. line 36 참조
+                console.log(form);
+
+                if(!form.id.value) {
+                    form.id.focus();
+                    alert('아이디를 입력해주세요')
+                    return false; // 리턴 false를 하면 제출 (submit) 이벤트가 일어나지 않음..
+                }
+
+                if(!form.post[0].checked && !form.post[1].checked) { // post는 input의 name 속성값으로 접근
+                    alert('우편물 수령 장소를 선택해 주세요!');
+                    return false;
+                }
+            }
+        </script>
+      </form>
+  </body>
+</html>
