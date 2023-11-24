@@ -54,7 +54,7 @@ app.post('/exercise2/signup', function(req, res) {
     console.log(typeof req.body);
 })
 app.get('/background', function(req, res) {
-    res.render('background');
+    res.render('background', {color: 'white'});
 })
 
 app.post('/background', function(req, res) {
