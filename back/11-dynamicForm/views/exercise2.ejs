@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        input {
+            width: 20%;
+            height: 3rem;
+        }
+        button {
+            background-color: #2db400;
+            outline: none;
+            border: none;
+            width: 20%;
+            height: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <form action="/exercise2/login" id="form">
+        <input type="text" name="id" id="id">
+        <br>
+        <input type="text" name="password" id="password">
+        <br>
+        <button type="button"> 로그인</button>
+        <div></div>
+    </form>
+
+    <script>
+        const btnElement = document.querySelector('button');
+        async function post() {
+            try {
+                
+                const formElement = $('#form')[0]; 
+                const data = {
+                    id : document.querySelector('#id').value,
+                    pw : $('#password')[0].value
+                }
+                const response = await axios({
+                    method: 'post',
+                    url: '/exercise2/login',
+                    data: data
+                })
+                $('div').html(`<span>${response.data}</span>`);
+                $('div').css('color', 'blue');
+            }catch(error) {
+                $('div').html(`<span>${error.response.data}</span>`);
+                $('div').css('color', 'red');
+                
+        }
+    }
+    btnElement.addEventListener('click', post);
+    </script>
+</body>
+</html>
