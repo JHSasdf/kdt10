@@ -69,27 +69,42 @@
       const bodyElement = document.querySelector("body");
       btnElement.addEventListener("click", async function () {
         const form = document.forms["form"];
-        console.log(form.hobby[0].checked);
 
-        console.log(form.hobby[1].checked);
-        console.log(form.hobby[2].checked);
+        // foreach 반복문 사용
+        // const hobbies = [];
+        // form.hobby.forEach((elem) => {
+        //   if (elem.checked) {
+        //     hobbies.push(elem.value);
+        //   }
+        // })
+
+        // filter, map 반복문사용
+        // Array.from(arrayLike) : 유사 배열 객체를 배열로 변환해준다.
+        // let hobbies = Array.from(form.hobby).filter((elem) => {
+        //   return elem.checked === true
+        // });
+        // hobbies = hobbies.map(elem => {
+        //   return elem.value;
+        // })
+        // console.log(hobbies);
+
+        const hobbies = Array.from(form.hobby).filter((elem) => elem.checked === true).map((elem) => elem.value);
+        
         const data = {
           name: form.name.value,
           sex: form.sex.value,
           year: form.year.value,
           month: form.month.value,
           day: form.day.value,
-          hobby1: form.hobby[0].checked,
-          hobby2: form.hobby[1].checked,
-          hobby3: form.hobby[2].checked,
+          hobbies: hobbies
         };
-        console.log(data)
         const response = await axios({
           method: "get",
           url: "/exercise1/axios",
           params: data,
         });
         $("body").append(JSON.stringify(response.data));
+        console.log(response.data);
       });
     </script>
   </body>

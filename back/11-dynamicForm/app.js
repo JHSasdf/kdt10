@@ -64,9 +64,9 @@ app.post('/exercise2/login', function(req, res) {
     const id = 'aaaa';
     const pw = '1111';
     if (req.body.id === id && req.body.pw === pw) {
-        res.send('로그인이 성공했습니다.')
+        res.send('로그인이 성공했습니다.');
     } else {
-        res.status(400).send('로그인이 실패했습니다.')
+        res.status(400).send('로그인이 실패했습니다.');
     }
 
 })

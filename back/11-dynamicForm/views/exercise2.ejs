@@ -30,7 +30,7 @@
     <form action="/exercise2/login" id="form">
         <input type="text" name="id" id="id">
         <br>
-        <input type="text" name="password" id="password">
+        <input type="password" name="password" id="password">
         <br>
         <button type="button"> 로그인</button>
         <div></div>
@@ -38,7 +38,9 @@
 
     <script>
         const btnElement = document.querySelector('button');
+        
         async function post() {
+            console.log($('#password')[0].value);
             try {
                 
                 const formElement = $('#form')[0]; 
