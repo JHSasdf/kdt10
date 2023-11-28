@@ -48,11 +48,26 @@
             const fileElement = document.querySelector('#dynamicFile');
             const [idElement, pwElement, nameElement, ageElement] = document.querySelectorAll('input');
             const sectionElement = document.querySelector('section');
-            formData.append('dynamicFile', fileElement.files[0]);
+            console.log(fileElement.files[0].name);
+            // 직접 접근해서 수정 불가.
+            // fileElement.files[0].name = 'idElement.value'
+
+            // 확장자 떼오기
+            const ext = fileElement.files[0].name.split('.')[1];
+            console.log(ext);
+
+            // file 클래스: 해당 파일의 이름을 바꿀 때 이용
+            const newFile = new File([fileElement.files[0]], idElement.value+ '.' + ext, { type: fileElement.files[0].type});
+            console.log(fileElement.files[0]);
+            console.log(newFile);
             formData.append('id', idElement.value);
             formData.append('pw', pwElement.value);
             formData.append('name', nameElement.value);
             formData.append('age', ageElement.value);
+            formData.append('dynamicFile', fileElement.files[0]);
+            // multer는 append하는 순서에 따라서 req.body가 바뀌기 때문에 file append는 무조건 맨 마지막에 넣어야한다.
+            // app.js line 29
+            console.log(newFile);
 
             const res = await axios({
                 method: 'post',
@@ -65,8 +80,7 @@
             })
                 sectionElement.classList.remove('invisible');
                 sectionElement.classList.add('flex');
-                console.log(res.data.file.path);
-                document.querySelector('img').src = res.data.file.path;
+                document.querySelector('img').src = '/'+res.data.file.path;
                 document.getElementById('id').textContent = `${res.data.userInform.id}님 환영합니다!`;
                 document.getElementById('pw').textContent = `비밀번호: ${res.data.userInform.pw}`;
                 document.getElementById('name').textContent = `이름: ${res.data.userInform.name}`;
