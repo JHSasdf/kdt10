@@ -25,7 +25,7 @@ const uploadDetail = multer({
             // done(null, path.basename(file.originalname, ext));
             // 확장자를 제외한 파일 이름만
             // console.log(path.basename(file.originalname, ext));
-            done(null, path.basename(file.originalname, ext) + Date.now() + ext);
+            done(null, path.basename(req.body.id, ext) + Date.now() + ext);
         }
     }),
     limits: {

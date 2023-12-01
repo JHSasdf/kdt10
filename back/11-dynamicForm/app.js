@@ -40,7 +40,7 @@ app.post('/axios', function(req, res) {
 
 app.get('/fetch', function(req, res) {
     console.log(req.query);
-    res.send(req.query);
+    res.json(req.query);
 })
 
 app.post('/fetch', function(req, res) {
@@ -68,6 +68,5 @@ app.post('/exercise2/login', function(req, res) {
     } else {
         res.status(400).send('로그인이 실패했습니다.');
     }
-
 })
 app.listen(PORT);

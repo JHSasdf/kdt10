@@ -157,7 +157,7 @@
         }
       }
     
-      function fetchGet() {
+      async function fetchGet() {
         const form = document.forms['register'];
         const data = {
             name: form.name.value,
@@ -165,19 +165,14 @@
         }
 
         // fetch(url, options)
-        fetch(`/fetch?name=${data.name}&gender=${data.gender}`,
-         {method: 'get' // default값. 생략 가능
-        }).then(function(response) {
-            console.log(response);
-            return response.json();
-            // 응답 (response) 객체로부터 JSON포맷의 응답 전문을 자바스크립트 객체로 변환
-        }).then( function(data) {
-          // data변수 : 직전 then 메서드의 리턴값. response.json()
-            console.log(data);
-            resultBox.textContent =`fetch Get 응답 완료. 당신의 이름은 ${data.name}, 성별은 ${data.gender}`
-        }) 
-      }
+        const response = await fetch(`/fetch?name=${data.name}&gender=${data.gender}`);
+        // 응답 (response) 객체로부터 JSON포맷의 응답 전문을 자바스크립트 객체로 변환
+        const responseJson = response.json();
+            console.log('response>',response)
+            // console.log('response.json>',response.json());
 
+            resultBox.textContent =`fetch Get 응답 완료. 당신의 이름은 ${responseJson.name}, 성별은 ${responseJson.gender}`
+      }
       function fetchPost() {
         const form = document.forms['register'];
         const data = {
