@@ -21,6 +21,7 @@ const uploadDetail = multer({
         },
         filename(req, file, done) {
             // 파일의 확장자 추출 => 'path' 모듈 활용
+            console.log(req.body);
             const ext = path.extname(file.originalname); // 확장자 추출
             // done(null, path.basename(file.originalname, ext));
             // 확장자를 제외한 파일 이름만
@@ -39,7 +40,7 @@ app.set('views', './views');
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 // 프론트에서 첫번쨰 패러미터 (/uploads)로 들어오면 두번째 패러미터로 처리해라
-app.use('/uploads', express.static('./uploads'));
+app.use('/uploads', express.static(__dirname+'/uploads'));
 
 app.get('/', function(req, res) {
     res.render('index');
@@ -105,6 +106,7 @@ app.get('/exercise1', function(req, res) {
 })
 
 app.post('/exercise1/dynamic', uploadDetail.single('dynamicFile'), function(req, res) {
+    console.log(req.body);
     res.send( { file: req.file, userInform: req.body});
 })
 
