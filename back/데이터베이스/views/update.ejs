@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="/exercise">홈</a>
+    <a href="/signup">회원가입</a>
+    <a href="/login">로그인</a>
+    <a href="/update">회원정보 수정</a>
+    <a href="/delete">회원정보 삭제</a>
+    <h1>회원정보 삭제</h1>
+    <form name="form">
+      <input type="text" placeholder="id" name="id" />
+      <input type="password" placeholder="pw" name="pw" />
+      <input type="text" placeholder="바꿀id" name="nextid" />
+      <input type="text" placeholder="바꿀이름" name="nextname" />
+      <input type="password" placeholder="바꿀pw" name="nextpw" />
+
+      <button type="button" onclick="update()">회원수정</button>
+    </form>
+    <hr />
+    <form action="/" name="deleteform">
+      <input type="text" placeholder="del_id" name="deleteid" />
+      <input type="password" placeholder="del_pw" name="deletepw" />
+      <button type="button" onclick="del()">회원 삭제</button>
+    </form>
+    <script>
+      function del() {
+        const delForm = document.forms["deleteform"];
+  
+        data = {
+          id: delForm.deleteid.value,
+          pw: delForm.deletepw.value,
+        };
+        axios({
+          method: "delete",
+          url: "/update",
+          data: data,
+        }).then(function (res) {
+          console.log(res.data);
+          console.log("삭제 성공!");
+        });
+      }
+
+      function update() {
+        console.log("sfs");
+        const form = document.forms["form"];
+        data = {
+          id: form.id.value,
+          pw: form.pw.value,
+          nextid: form.nextid.value,
+          nextname: form.nextname.value,
+          nextpw: form.nextpw.value,
+        };
+        axios({
+          method: "patch",
+          url: "/update",
+          data: data,
+        }).then(function (res) {
+          console.log(res.data);
+          console.log("수정 성공!");
+        });
+      }
+    </script>
+  </body>
+</html>

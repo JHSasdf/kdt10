@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <a href="/exercise">홈</a>
+    <a href="/signup">회원가입</a>
+    <a href="/login">로그인</a>
+    <a href="/update">회원정보 수정</a>
+    <a href="/delete">회원정보 삭제</a>
+    <h1>로그인</h1>
+    <form action="/login" method="post" name="form">
+        <input type="text"  placeholder="id" name="id">
+        <input type="password" placeholder="pw" name="pw">
+        <button>로그인</button>
+        <% for (word of result) {%>
+            <p> <%= word %></p>
+            <% } %>
+    </form>
+
+    <script>
+        
+    </script>
+</body>
+</html>

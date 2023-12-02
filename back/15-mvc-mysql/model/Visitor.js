@@ -51,11 +51,50 @@ function postVisitor(data, cb) {
 
     console.log('Visitor.js>', rows)
 
-    cb(rows.insertId);
+    cb(rows.insertId); // rows.insertId의 정보를 controller에 넘겨줌.
   })
+}
+
+function getVisitor(id, cb) {
+  const sql = `SELECT * from visitor where id = ?`;
+  conn.query(sql, [ id ], function(err, rows) {
+    if(err) {
+      throw err
+    }
+
+    console.log('getVisitor Visitor.js>', rows);
+    cb(rows[0]);
+  })
+}
+
+function patchVisitor(data, cb) {
+  const sql = 'UPDATE visitor SET name = ?, comment = ? where id= ?';
+  conn.query(sql, [data.name, data.comment, data.id], function (err, rows) {
+    if (err) {
+      throw err
+    }
+
+    console.log('patchVisitor getVisitor.js >', rows);
+    cb(rows);
+  });
+}
+
+function deleteVisitor(id, cb) {
+  const sql = 'DELETE FROM visitor where id = ?'
+  conn.query(sql, [id], function(err, rows) {
+    if (err) {
+      throw err
+    }
+
+    console.log('deleteVisitor visitor.js>', rows);
+    cb(rows);
+  });
 }
 
 module.exports = {
   getVisitors: getVisitors,
-  postVisitor: postVisitor
+  postVisitor: postVisitor,
+  getVisitor: getVisitor,
+  patchVisitor: patchVisitor,
+  deleteVisitor: deleteVisitor
 };
