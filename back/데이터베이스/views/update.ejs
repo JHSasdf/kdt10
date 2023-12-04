@@ -13,28 +13,25 @@
     <a href="/update">회원정보 수정</a>
     <a href="/delete">회원정보 삭제</a>
     <h1>회원정보 삭제</h1>
+    <input type="hidden" id="realId" value="<%= userInfo.id %>">
     <form name="form">
-      <input type="text" placeholder="id" name="id" />
-      <input type="password" placeholder="pw" name="pw" />
-      <input type="text" placeholder="바꿀id" name="nextid" />
-      <input type="text" placeholder="바꿀이름" name="nextname" />
-      <input type="password" placeholder="바꿀pw" name="nextpw" />
+      <input type="text" value="<%= userInfo.userid %>" readonly>
+      <input type="text" placeholder="바꿀이름" value="<%= userInfo.name %>" name="nextname" />
+      <input type="password" placeholder="바꿀pw" value="<%= userInfo.pw %>" name="nextpw" />
 
       <button type="button" onclick="update()">회원수정</button>
     </form>
     <hr />
     <form action="/" name="deleteform">
-      <input type="text" placeholder="del_id" name="deleteid" />
-      <input type="password" placeholder="del_pw" name="deletepw" />
       <button type="button" onclick="del()">회원 삭제</button>
     </form>
+    <div id="place"></div>
     <script>
       function del() {
         const delForm = document.forms["deleteform"];
-  
+        const realId = document.querySelector('#realId');
         data = {
-          id: delForm.deleteid.value,
-          pw: delForm.deletepw.value,
+          id: realId.value,
         };
         axios({
           method: "delete",
@@ -43,16 +40,15 @@
         }).then(function (res) {
           console.log(res.data);
           console.log("삭제 성공!");
+          document.querySelector('#place').textContent = res.data;
         });
       }
 
       function update() {
-        console.log("sfs");
         const form = document.forms["form"];
+        const realId = document.querySelector('#realId');
         data = {
-          id: form.id.value,
-          pw: form.pw.value,
-          nextid: form.nextid.value,
+          id: realId.value,
           nextname: form.nextname.value,
           nextpw: form.nextpw.value,
         };
@@ -63,6 +59,7 @@
         }).then(function (res) {
           console.log(res.data);
           console.log("수정 성공!");
+          document.querySelector('#place').textContent = res.data;
         });
       }
     </script>

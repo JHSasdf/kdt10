@@ -17,18 +17,19 @@ function getLogin(req, res) {
 }
 
 async function postLogin(req, res) {
-    const result = await model.postLogin(req.body);
-    res.render('login', {result: result});
+    const result = await model.postLogin(req.body, res);
 }
 
 async function updateInfo(req, res) {
     console.log('req.body>', req.body)
     const result = await model.updateDb(req.body);
+    res.send('업데이트 완료!');
     
 }
 
 async function deleteInfo(req, res) {
     const result = await model.deleteDB(req.body);
+    res.send('삭제 완료!');
 }
 
 function getUpdate(req, res) {

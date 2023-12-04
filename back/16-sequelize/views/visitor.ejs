@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/visitor.js" defer></script>
+    <title>방명록</title>
+</head>
+<body>
+    <a href="/">home</a>
+    <form action="" name="visitor-form">
+        <fieldset>
+            <legend>방명록 등록</legend>
+            <input type="text" placeholder="사용자 이름" name="name" id="name"> <br>
+            <input type="text" placeholder="방명록" name="comment" id="comment"><br>
+            <div id="button-group">
+                <button type="button" onclick="createVisitor()">등록</button>
+
+            </div>
+        </fieldset>
+    </form>
+    <br>
+    <table border="1" cellspacing="0">
+        <Thead>
+            <tr>
+                <th>ID</th>
+                <th>작성자</th>
+                <th>방명록</th>
+                <th>수정</th>
+                <th>삭제</th>
+            </tr>
+        </Thead>
+        <tbody>
+            <% for (dat of data) { %>
+                <tr id="tr_<%= dat.id  %>">
+                <td><%= dat.id  %></td>
+                <td><%= dat.name %></td>
+                <td><%= dat.comment %></td>
+                <td><button type="button" onclick="editVisitor('<%= dat.id %>')">수정</button></td>
+                <td><button type="button" onclick="deleteVisitor(this, '<%= dat.id %>')">삭제</button></td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+</body>
+</html>

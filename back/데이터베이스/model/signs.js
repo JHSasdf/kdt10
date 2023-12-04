@@ -19,35 +19,31 @@ async function insertUser(data) {
     return result;
 }
 
-async function postLogin(data) {
+async function postLogin(data, res) {
     const sql = 'SELECT * FROM USER where userid = ?'
     try {
         const [result] = await conn.query(sql, [data.id]);
 
         if(result[0].pw == data.pw) {
-            return ['로그인 성공', result[0].userid, result[0].pw]
+            res.render('update', {userInfo: result[0]});
+            return;
         } else {
-            return ['아이디 혹은 비밀번호가 달라요.']
+            return ['아이디 혹은 비밀번호가 달라요.'];
         }
     }catch {
-        return ['아이디가 없습니다.']
+        return ['아이디가 없습니다.'];
     }
 }
 
 async function updateDb(data) {
-    const sql1 = 'SELECT * FROM USER where userid = ?'
-    let [result1] = await conn.query(sql1, [data.id]);
-    let id = result1[0].id;
-    const sql2 =  'UPDATE user SET userid = ?, name = ?, pw = ? where id= ?'
-    await conn.query(sql2, [data.nextid, data.nextname, data.nextpw, id]);
+
+    const sql2 =  'UPDATE user SET name = ?, pw = ? where id= ?'
+    await conn.query(sql2, [data.nextname, data.nextpw, data.id]);
 }
 
 async function deleteDB(data) {
-    const sql1 = 'SELECT * FROM USER where userid = ?'
-    let [result1] = await conn.query(sql1, [data.id]);
-    let id = result1[0].id;
     const sql2 =  'DELETE FROM USER where id= ?'
-    await conn.query(sql2, [id]);
+    await conn.query(sql2, [data.id]);
 }
 
 module.exports = {
