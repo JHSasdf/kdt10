@@ -25,7 +25,7 @@ const sequelize = new Sequelize(
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-db.Visitor = require('./Visitor')(sequelize, Sequelize); // 첫번째 인자: 인스턴스, 두번째 인자: 객체 청사진(class)
+db.user = require('./user')(sequelize, Sequelize); // 첫번째 인자: 인스턴스, 두번째 인자: 객체 청사진(class)
 // models/Visitor.js에서 정의한 모델이 db.Visitor 에 들어감
 // db = { sequelize: sequelize, Sequelize: Sequelize, Visitor: ~~~}
 
