@@ -48,7 +48,7 @@ app.get('/destroy', (req, res) => {
             console.log(err);
             res.send('fail');
         }
-        res.redirect('/name'); // 세션 객체에서 name 키 값 사라짐
+        res.redirect('/name'); // 세션 객체 전체가 사라짐
     })
 })
 
