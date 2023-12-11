@@ -22,6 +22,11 @@ app.use(express.static('public'));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
+
+app.use(function(req, res, next) {
+    res.locals.token = req.session.token;
+    next();
+})
 app.use(router);
 
 app.use('*', function(req, res) {

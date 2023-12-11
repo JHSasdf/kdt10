@@ -5,6 +5,7 @@
     <h1><%= data.name %>님 프로필 정보</h1>
 
     <form name="edit-profile">
+  
       <input
         type="text"
         id="userid"
@@ -16,6 +17,11 @@
       <input type="hidden" id="id" value="<%= data.id %>" /><br />
       <button type="button" onclick="edit()">수정</button>
       <button type="button" onclick="destroy()">회원탈퇴</button>
+      
+    </form>
+
+    <form action="/logout" method="post">
+      <button>로그아웃</button>
     </form>
 
     <br />

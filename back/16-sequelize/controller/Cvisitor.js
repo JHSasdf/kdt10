@@ -82,7 +82,7 @@ function patch_visitor(req, res) {
 }
 
 function delete_visitor(req, res) {
-    console.log(req.body);
+    console.log('sfsfsf',req.body);
 
     // Visitor.deleteVisitor(req.body.id, function(result) {
     //     console.log('delete_Visitor Cvisitor.js> ', result);

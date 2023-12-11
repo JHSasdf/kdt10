@@ -37,7 +37,6 @@ async function signup(req, res, next) {
 
 async function login(req, res, next) {
     let result;
-    console.log(req.body);
     try {
         // findOne의 경우 오류가 뜨는 것이 아니라 null값을 가져온다.
         result = await Users.findOne({
@@ -50,11 +49,9 @@ async function login(req, res, next) {
         
         const pwIsCorrect = bcrypt.compareSync(req.body.pw, result.pw);
         if (pwIsCorrect) {
-            req.session.userid = result.userId;
-            req.session.name = result.name;
-            req.session.pw = result.pw;
-            const token = jwt.sign({id: req.session.userid}, SECRET);
+            const token = jwt.sign({id: result.userId}, SECRET);
             req.session.token = token;
+            // axios로 해당 값 보내주고 프론트에서 location.href로 profile로 감.
             res.send({
                 userid: result.userId,
                 name: result.name,
@@ -70,18 +67,54 @@ async function login(req, res, next) {
     
 }
 
-function getProfile(req, res) {
-    res.render('profile', {
-        data: {
-            name: req.session.name,
-            userid: req.session.userid,
-            pw: req.session.pw
-        }});
+async function getProfile(req, res, next) {
+    if (!res.locals.token) {
+        return res.redirect('401');
+    }
+    try {
+        const tokenId = jwt.verify(res.locals.token, SECRET).id;
+        const existingId = await Users.findOne({
+            where : {userid: tokenId}
+        });
+        if (existingId) {
+            res.render('profile', {
+                data: {
+                    name: existingId.name,
+                    userid: existingId.userId,
+                    pw: existingId.pw,
+                    id: existingId.id
+                }});
+                return;
+        } else {
+            return res.redirect('401');
+        }
+        // 위조토큰 방지
+    }catch(err) {
+        res.redirect('401');
+    }
+}
+
+function logout(req, res) {
+    req.session.token = '';
+
+    res.redirect('/');
+}
+
+async function destroy(req, res) {
+    console.log('sfsfs',req.body)
+    await Users.destroy( { where: {id : req.body.id} });
+    res.json( { result: '삭제완료'});
+}
+
+function get401(req, res) {
+    res.render('401');
 }
 
 function get500(req, res) {
     res.render('500');
 }
+
+
 
 module.exports = {
     getIndex: getIndex,
@@ -90,5 +123,8 @@ module.exports = {
     signup: signup,
     login: login,
     get500: get500,
-    getProfile: getProfile
+    getProfile: getProfile,
+    logout: logout,
+    get401: get401,
+    destroy: destroy
 }
