@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="/socket.io/socket.io.js"></script>
+    <title>socket.io 실습</title>
+  </head>
+  <body>
+    <main>
+        <ul class="container"></ul>
+    </main>
+    <div class="submit">
+      <input type="text" id="text" />
+      <button onclick="submitText()" type="button">전송</button>
+    </div>
+    <!-- 실습1 각 버튼 누를 때마다 서버로 메세지 보내기-->
+    <!-- <button onclick="sayHello()">HELLO</button>
+    <button onclick="sayStudy()">STUDY</button>
+    <button onclick="sayBye()">BYE</button> -->
+    <script>
+      const socket = io.connect();
+
+      socket.on("connect", function () {
+        console.log("클라이언트 연결 완료 >", socket.id);
+      });
+
+      // hello emit
+      function submitText() {
+        const pElement = document.createElement('p');
+        pElement.classList.add('right');
+        const gotMsg = document.createElement('span');
+        gotMsg.textContent = document.querySelector('#text').value;
+        gotMsg.classList.add('mymsg');
+        pElement.appendChild(gotMsg);
+        document.querySelector('.container').appendChild(pElement);
+        socket.emit("text", { who: socket.id, msg: `${document.querySelector('#text').value}`});
+        document.querySelector('#text').value = '';
+      }
+
+      socket.on('notice', function(msg) {
+        const divElement = document.createElement('div');
+        divElement.classList.add('introduce');
+        divElement.textContent = msg;
+        document.querySelector('main').prepend(divElement);
+      })
+
+      socket.on('brod', function(data) {
+        const pElement = document.createElement('p');
+        pElement.classList.add('left');
+        const gotMsg = document.createElement('span');
+        gotMsg.textContent = data.msg;
+        gotMsg.classList.add('someones-msg')
+        pElement.appendChild(gotMsg);
+        document.querySelector('.container').appendChild(pElement);
+      })
+
+
+      // helloKR on
+      socket.on("helloKR", function (data) {
+        console.log(data);
+        const sentence = `${data.who}: ${data.msg}`;
+        document.querySelector("#server-result").textContent = sentence;
+      });
+    </script>
+  </body>
+</html>

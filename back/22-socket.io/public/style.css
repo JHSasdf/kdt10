@@ -1,0 +1,44 @@
+body {
+    background-color: skyblue;
+}
+
+.submit {
+    position: fixed;
+    bottom: 0rem;
+    width: 100%;
+    text-align: center;
+}
+
+.submit input {
+    width: 50%;
+}
+
+p {
+    margin: 1.5rem 0;
+}
+.mymsg {
+    padding: 0.5rem 1rem;
+    text-align: end;
+    background-color: rgb(201, 201, 3);
+    border-radius: 5px;
+}
+
+.someones-msg {
+    text-align: left;
+    padding: 0.5rem 1rem;
+    background-color: aliceblue;
+    border-radius: 5px;
+
+}
+
+.left {
+    text-align: left;
+}
+.right {
+    text-align: right;
+}
+
+.introduce {
+    text-align: center;
+    color: rgb(98, 165, 192);
+}

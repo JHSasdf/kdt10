@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/socket.io/socket.io.js"></script>
+    <title>socket.io</title>
+</head>
+<body>
+    <h1>My Chat</h1>
+
+    <!-- 실습1 각 버튼 누를 때마다 서버로 메세지 보내기-->
+    <button onclick="sayHello()">HELLO</button>
+    <button onclick="sayStudy()">STUDY</button>
+    <button onclick="sayBye()">BYE</button>
+    <p id="server-result"></p>
+    <script>
+        // 소켓 사용을 위한 객체 생성
+        const socket = io.connect();
+
+        socket.on('connect', function() {
+            console.log('클라이언트 연결 완료 >', socket.id);
+        });
+
+        // hello emit
+        function sayHello() {
+            socket.emit('hello', { who: 'client', msg: 'hello'});
+        }
+
+        function sayStudy() {
+            socket.emit('study', {who: 'client', msg: 'study'});
+        }
+        function sayBye() {
+            socket.emit('bye', {who: 'client', msg: 'bye'});
+        }
+        socket.on('userin', function(data) {
+            console.log(data)
+        })
+
+        // helloKR on
+        socket.on('helloKR', function(data) {
+            console.log(data);
+            const sentence = `${data.who}: ${data.msg}`;
+            document.querySelector('#server-result').textContent = sentence;
+        });
+        socket.on('studyKR', function(data) {
+            console.log(data);
+            const sentence = `${data.who}: ${data.msg}`;
+            document.querySelector('#server-result').textContent = sentence;
+        });
+        socket.on('byeKR', function(data) {
+            console.log(data);
+            const sentence = `${data.who}: ${data.msg}`;
+            document.querySelector('#server-result').textContent = sentence;
+        });
+    </script>
+</body>
+
+</html>
