@@ -42,3 +42,10 @@ p {
     text-align: center;
     color: rgb(98, 165, 192);
 }
+
+.secret-msg {
+    background-color: rgb(252, 210, 217);
+    border-radius: 5px;
+    text-align: left;
+    padding: 0.5rem 1rem;
+}

@@ -12,6 +12,8 @@
         <ul class="container"></ul>
     </main>
     <div class="submit">
+      <select name="users" id="users">
+      </select>
       <input type="text" id="text" />
       <button onclick="submitText()" type="button">전송</button>
     </div>
@@ -21,7 +23,7 @@
     <button onclick="sayBye()">BYE</button> -->
     <script>
       const socket = io.connect();
-
+      const clients = [];
       socket.on("connect", function () {
         console.log("클라이언트 연결 완료 >", socket.id);
       });
@@ -31,38 +33,65 @@
         const pElement = document.createElement('p');
         pElement.classList.add('right');
         const gotMsg = document.createElement('span');
-        gotMsg.textContent = document.querySelector('#text').value;
-        gotMsg.classList.add('mymsg');
-        pElement.appendChild(gotMsg);
-        document.querySelector('.container').appendChild(pElement);
-        socket.emit("text", { who: socket.id, msg: `${document.querySelector('#text').value}`});
-        document.querySelector('#text').value = '';
+        
+        if (document.querySelector('select').value === '전체') {
+          gotMsg.textContent = `나: ${document.querySelector('#text').value}`;
+          gotMsg.classList.add('mymsg');
+          pElement.appendChild(gotMsg);
+          document.querySelector('.container').appendChild(pElement);
+          socket.emit("text", { who: socket.id, msg: `${document.querySelector('#text').value}`});
+          document.querySelector('#text').value = '';
+        } else {
+          gotMsg.textContent = `(${document.querySelector('#users').value}님에게) 나: ${document.querySelector('#text').value}`;
+          pElement.appendChild(gotMsg);
+          document.querySelector('.container').appendChild(pElement);
+          gotMsg.classList.add('secret-msg');
+          socket.emit("toText", { who: socket.id, msg: `${document.querySelector('#text').value}`, to: `${document.querySelector('#users').value}`});
+          document.querySelector('#text').value = '';
+        }
       }
 
-      socket.on('notice', function(msg) {
+      socket.on('notice', function(data) {
+        // clients.push(socket.id);
         const divElement = document.createElement('div');
         divElement.classList.add('introduce');
-        divElement.textContent = msg;
+        divElement.textContent = data.msg;
         document.querySelector('main').prepend(divElement);
+        console.log(data.sockets);
+
+        document.querySelector('#users').innerHTML = '';
+        const optionEle = document.createElement('option');
+          optionEle.value = '전체';
+          optionEle.textContent = '전체';
+          document.querySelector('#users').appendChild(optionEle);
+        for (const socket of data.sockets) {
+          const optionElement = document.createElement('option');
+          optionElement.value = socket;
+          optionElement.textContent = socket;
+          document.querySelector('#users').appendChild(optionElement);
+        }
       })
 
       socket.on('brod', function(data) {
         const pElement = document.createElement('p');
         pElement.classList.add('left');
         const gotMsg = document.createElement('span');
-        gotMsg.textContent = data.msg;
+        gotMsg.textContent = `${data.who} : ${data.msg}`;
         gotMsg.classList.add('someones-msg')
         pElement.appendChild(gotMsg);
         document.querySelector('.container').appendChild(pElement);
       })
 
-
-      // helloKR on
-      socket.on("helloKR", function (data) {
-        console.log(data);
-        const sentence = `${data.who}: ${data.msg}`;
-        document.querySelector("#server-result").textContent = sentence;
+      socket.on('toClient', function(data) {
+        const pElement = document.createElement('p');
+        pElement.classList.add('left');
+        const gotMsg = document.createElement('span');
+        gotMsg.textContent = `${data.who} : ${data.msg}`;
+        gotMsg.classList.add('secret-msg');
+        pElement.appendChild(gotMsg);
+        document.querySelector('.container').appendChild(pElement);
       });
+
     </script>
   </body>
 </html>
