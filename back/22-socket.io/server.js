@@ -25,7 +25,7 @@ app.get('/exercise', function(req, res) {
 
 app.use(express.static('public'));
 
-const sockets = [];
+const sockets = {};
 
 // io.on(): socket 관련한 통신 작업을 처리
 io.on('connection', function(socket) {
@@ -40,9 +40,11 @@ io.on('connection', function(socket) {
     // io.to(소켓 아이디).emit(event_name, data) : 소켓 아이디에 해당하는 클라이언트에게만 전송
     
     // 전체 클라이언트에게 입장 안내
-    
-    sockets.push(socket.id);
-    io.emit('notice', {msg: `${socket.id}님이 입장하셨습니다.`, sockets: sockets});
+    socket.on('userEnter', function(data) {
+        sockets[data.socketId] = data.name;
+        io.emit('notice', {msg: `${data.name}님이 입장하셨습니다.`, sockets: sockets});
+
+    })
 
     // [실습 1]
     // socket.on('hello', function(data) {
@@ -65,13 +67,23 @@ io.on('connection', function(socket) {
 
     socket.on('text', function(data) {
         console.log(`${data.who}: ${data.msg}`);
-        socket.broadcast.emit('brod', {who: data.who, msg: data.msg});
+        socket.broadcast.emit('brod', {who: data.who, msg: data.
+            msg});
     })
 
     socket.on('toText', function(data) {
-        io.to(data.to).emit('toClient', {who: data.who, msg:data.msg});
+        io.to(data.to).emit('toClient', {who: sockets[data.who], msg:data.msg});
+    });
+
+    socket.on('disconnect', function() {
+
+        const removedId = sockets[socket.id];
+        delete sockets[socket.id];
+        io.emit('notice', {msg: `${removedId}님이 퇴장하셨습니다.`, sockets: sockets});
+        console.log('유저 서버 연결 종료 >', socket.id);
     })
 })
+
 
 server.listen(PORT, function() {
     console.log(`http://localhost:${PORT}`);

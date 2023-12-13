@@ -8,25 +8,42 @@
     <title>socket.io 실습</title>
   </head>
   <body>
-    <main>
+    <header>
+      <input type="text" id="username" placeholder="이름">
+      <button id="enter" type="button">입장</button>
+    </header>
+    <main class="dnone">
+      <div class="notice"></div>
         <ul class="container"></ul>
+        <div class="submit">
+          <select name="users" id="users">
+          </select>
+          <input type="text" id="text" onkeydown="if(window.event.keyCode == 13) {submitText()}" />
+          <button onclick="submitText()" type="button">전송</button>
+        </div>
     </main>
-    <div class="submit">
-      <select name="users" id="users">
-      </select>
-      <input type="text" id="text" />
-      <button onclick="submitText()" type="button">전송</button>
-    </div>
     <!-- 실습1 각 버튼 누를 때마다 서버로 메세지 보내기-->
     <!-- <button onclick="sayHello()">HELLO</button>
     <button onclick="sayStudy()">STUDY</button>
     <button onclick="sayBye()">BYE</button> -->
     <script>
       const socket = io.connect();
-      const clients = [];
+      let clients = {};
       socket.on("connect", function () {
-        console.log("클라이언트 연결 완료 >", socket.id);
+        console.log("클라이언트 연결 완료fmwlvmwlvkmlw >", socket.id);
       });
+      
+      function enter(event) {
+        event.target.disabled =true;
+        const nameElement = document.querySelector('#username');
+        const name = nameElement.value;
+        if (nameElement.value.trim().length > 0) {
+          document.querySelector('main').classList.remove('dnone');
+          socket.emit('userEnter', { name : name, socketId: socket.id })
+        }
+      }
+
+      document.querySelector('#enter').addEventListener('click', enter);
 
       // hello emit
       function submitText() {
@@ -39,16 +56,19 @@
           gotMsg.classList.add('mymsg');
           pElement.appendChild(gotMsg);
           document.querySelector('.container').appendChild(pElement);
+          console.log(socket.id);
           socket.emit("text", { who: socket.id, msg: `${document.querySelector('#text').value}`});
           document.querySelector('#text').value = '';
         } else {
-          gotMsg.textContent = `(${document.querySelector('#users').value}님에게) 나: ${document.querySelector('#text').value}`;
+          console.log(clients);
+          gotMsg.textContent = `(${clients[document.querySelector('#users').value]}님에게) 나: ${document.querySelector('#text').value}`;
           pElement.appendChild(gotMsg);
           document.querySelector('.container').appendChild(pElement);
           gotMsg.classList.add('secret-msg');
           socket.emit("toText", { who: socket.id, msg: `${document.querySelector('#text').value}`, to: `${document.querySelector('#users').value}`});
           document.querySelector('#text').value = '';
         }
+        document.querySelector('.container').scrollTop = document.querySelector('.container').scrollHeight;
       }
 
       socket.on('notice', function(data) {
@@ -56,18 +76,21 @@
         const divElement = document.createElement('div');
         divElement.classList.add('introduce');
         divElement.textContent = data.msg;
-        document.querySelector('main').prepend(divElement);
-        console.log(data.sockets);
+        document.querySelector('.notice').appendChild(divElement);
 
         document.querySelector('#users').innerHTML = '';
         const optionEle = document.createElement('option');
           optionEle.value = '전체';
           optionEle.textContent = '전체';
           document.querySelector('#users').appendChild(optionEle);
-        for (const socket of data.sockets) {
+          clients = data.sockets
+        for (const key in data.sockets) {
+          if (socket.id === key) {
+            continue;
+          }
           const optionElement = document.createElement('option');
-          optionElement.value = socket;
-          optionElement.textContent = socket;
+          optionElement.value = key;
+          optionElement.textContent = data.sockets[key];
           document.querySelector('#users').appendChild(optionElement);
         }
       })
@@ -76,10 +99,11 @@
         const pElement = document.createElement('p');
         pElement.classList.add('left');
         const gotMsg = document.createElement('span');
-        gotMsg.textContent = `${data.who} : ${data.msg}`;
+        gotMsg.textContent = `${clients[data.who]} : ${data.msg}`;
         gotMsg.classList.add('someones-msg')
         pElement.appendChild(gotMsg);
         document.querySelector('.container').appendChild(pElement);
+        document.querySelector('.container').scrollTop = document.querySelector('.container').scrollHeight;
       })
 
       socket.on('toClient', function(data) {
@@ -90,6 +114,7 @@
         gotMsg.classList.add('secret-msg');
         pElement.appendChild(gotMsg);
         document.querySelector('.container').appendChild(pElement);
+        document.querySelector('.container').scrollTop = document.querySelector('.container').scrollHeight;
       });
 
     </script>
