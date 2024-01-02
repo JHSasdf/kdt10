@@ -14,7 +14,7 @@ aws.config.update({
     secretAccessKey: process.env.AWS_S3_ACCESS_KEY,
     region: process.env.AWS_S3_REGION
 })
-
+let index = 1;
 // aws s3 인스턴스 생성
 const s3 = new aws.S3();
 
@@ -32,7 +32,8 @@ const upload = multer({
             cb(null, {fieldName: file.fieldname});
         },
         key: function(req, file, cb) {
-            cb(null, Date.now().toString() + "-" + file.originalname);
+            cb(null, + index + '-newimage.png');
+            index++;
         }
     })
 })
