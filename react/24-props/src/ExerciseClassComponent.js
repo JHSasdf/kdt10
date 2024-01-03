@@ -21,7 +21,7 @@ ExerciseClassComponent.defaultProps = {
 }
 
 ExerciseClassComponent.propTypes = {
-    text: PropTypes.string
+    text: PropTypes.string.isRequired
 }
 
 export default ExerciseClassComponent;
