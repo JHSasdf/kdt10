@@ -18,6 +18,15 @@ function Exercise3() {
     // }
 
     function disappear() {
+        setBtnVal(!btnVal);
+        if (btnVal) {
+            setBtnText('보여라');
+        }else {
+            setBtnText('사라져라');
+        }
+    }
+
+    function disappear2() {
         if (btnVal) {
             setBtnText('보여라');
         } else {
