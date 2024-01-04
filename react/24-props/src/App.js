@@ -1,12 +1,3 @@
-import './App.css';
-import FuncComponent from './FuncComponent';
-import Button from './Button';
-import ClassComponent from './ClassComponet';
-import FavoriteFood from './FavoriteFood';
-import BestSeller from './BestSeller';
-import ExerciseClassComponent from './ExerciseClassComponent';
-
-
 function App() {
   function valid() {
     console.log('콘솔 띄우기 성공!')

@@ -72,7 +72,7 @@ function App() {
             - <input> -> <input></input> or <input /> 
             - <br> -> <br></br> or <br/>
             
-        6. wntjr
+        6. 주석
           -//: jsx 외부 주석 (resturn 밖)
           - jsx 내부 주석 {**}    
             */}
