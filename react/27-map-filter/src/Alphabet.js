@@ -25,6 +25,15 @@ function Alpahbet() {
       alpha: "e",
     },
   ]);
+  
+    const addAlpha = (e) => {
+      const newAlpha = alphabet2.concat({
+        id: alphabet2.length + 1,
+        alpha: inputAlpha,
+      });
+      setAlphabet2(newAlpha);
+      setInputAlpha("");
+    };
 
   const addUser = (e) => {
     if (inputUser.name.trim().length <= 0 || inputUser.email.trim().length <= 0) {
@@ -43,15 +52,6 @@ function Alpahbet() {
     );
   };
 
-  const addAlpha = (e) => {
-    const newAlpha = alphabet2.concat({
-      id: alphabet2.length + 1,
-      alpha: inputAlpha,
-    });
-    setAlphabet2(newAlpha);
-    setInputAlpha("");
-  };
-
   const [users, setUsers] = useState([
     {
       name: "코디",
@@ -65,10 +65,11 @@ function Alpahbet() {
   });
 
   const handleKeyDown = (e) => {
+    // 한국어 버그 픽스
     if(e.isComposing) {
         return;
     }
-    if(e.code == 'Enter') {
+    if(e.code === 'Enter') {
         addUser();
     } 
   }
