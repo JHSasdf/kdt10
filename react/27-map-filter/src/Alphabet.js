@@ -66,7 +66,8 @@ function Alpahbet() {
 
   const handleKeyDown = (e) => {
     // 한국어 버그 픽스
-    if(e.isComposing) {
+    console.log(e);
+    if (e.isComposing) {
         return;
     }
     if(e.code === 'Enter') {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./app.css";
 function Exercise() {
   const [info, setInfo] = useState([]);
@@ -8,7 +8,16 @@ function Exercise() {
   const [inputSearchInfo, setInputSearchInfo] = useState("");
   const [searchInfo, setSearchInfo] = useState([]);
 
+  const writer = useRef();
+  const title = useRef();
+
   const append = () => {
+    if (!writer.current.value || writer.current.value.trim().length === 0) {
+      return writer.current.focus();
+    }
+    if (!title.current.value || title.current.value.trim().length === 0) {
+      return title.current.focus();
+    }
     const NewInfo = info.concat({
       user: inputUser,
       title: inputTitle,
@@ -16,12 +25,32 @@ function Exercise() {
     setInfo(NewInfo);
   };
 
+  const handleKeyDown = (e) => {
+    console.log('keyup')
+    console.log(e);
+    if (e.nativeEvent.isComposing) {
+      return;
+    }
+    if (e.code === "Enter") {
+      append();
+    }
+  };
+  const handleKeyDown2 = (e) => {
+    if (e.nativeEvent.isComposing) {
+      return;
+    }
+    if (e.code === "Enter") {
+      append();
+    }
+  };
+
   const search = () => {
-    setSearchInfo([]);
     let filteredInfo;
     if (select === "user") {
       filteredInfo = info.filter((elem) => {
-        return elem.user.includes(inputSearchInfo);
+        // return elem.user.includes(inputSearchInfo);
+        // 아래로 하면 if로 안걸러도 됨
+        return elem[select].includes(inputSearchInfo);
       });
     } else {
       filteredInfo = info.filter((elem) => {
@@ -38,9 +67,19 @@ function Exercise() {
     <>
       <div>
         작성자 :
-        <input type="text" onChange={(e) => setInputUser(e.target.value)} />
+        <input
+          type="text"
+          ref={writer}
+          onKeyDown={(e) => handleKeyDown(e)}
+          onChange={(e) => setInputUser(e.target.value)}
+        />
         제목 :
-        <input type="text" onChange={(e) => setInputTitle(e.target.value)} />
+        <input
+          type="text"
+          ref={title}
+          onKeyDown={(e) => handleKeyDown2(e)}
+          onChange={(e) => setInputTitle(e.target.value)}
+        />
         <button onClick={append}>작성</button>
       </div>
       <select
