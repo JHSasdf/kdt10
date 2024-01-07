@@ -9,7 +9,7 @@ function App() {
       <hr />
       <UseCallbackEx></UseCallbackEx>
       <hr />
-      <UseCallbackEx2 postid={9}></UseCallbackEx2>
+      <UseCallbackEx2 postid={3}></UseCallbackEx2>
     </div>
   );
 }

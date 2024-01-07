@@ -26,6 +26,9 @@ function UseCallbackEx2({ postid }) {
 
     // useEffect 의존성 배열에 "함수"
     // 컴포넌트가 리렌더링 -> 함수 재생성 (주소값 변경) -> getPost 재호출
+    // 의존성 배열에 post를 넣으면 함수는 참조값이므로 getPost()를 이용해서 생성된 post의 참조값이 계속 달라져서 useEffect 무한 실행.
+    // 의존성 배열에 getPost를 넣으면 useCallback으로 postid가 바뀌지 않는 한 함수는 재정의되지 않으므로 한 번만 실행 
+    // 애초에 이런 방식으로 useCallback과 useEffect를 같이 쓰는 듯.
     useEffect(() => {
         getPost();
     }, [getPost]);
