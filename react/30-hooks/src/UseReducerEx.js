@@ -1,4 +1,7 @@
 import { useReducer } from "react";
+// useReducer는 useState의 대체로 나왔지만 복잡해질 때만 써야 좋음
+// 간단하면 useState이용
+
 const reducer = (prevNumber, action) => {
     // action 안에는 dispatch의 인자 자체가 들어감.
     switch (action.type) {

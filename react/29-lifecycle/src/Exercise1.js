@@ -1,3 +1,4 @@
+import './exercise1.scss'
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 function Exercise1() {
@@ -90,10 +91,10 @@ function Exercise1() {
       {data.length ? (
         data.map((elem) => {
           return (
-            <ul key={elem.id}>
-              <li>{elem.id}</li>
-              <li>{elem.title}</li>
-              <li>{elem.body}</li>
+            <ul className='post-list' key={elem.id}>
+              <li className='post'><span>{elem.id}</span></li>
+              <li className='post'>{elem.title}</li>
+              <li className='post'>{elem.body}</li>
             </ul>
           );
         })

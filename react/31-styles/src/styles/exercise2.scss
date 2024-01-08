@@ -1,0 +1,56 @@
+@mixin move($distance, $name) {
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    position: relative;
+
+    animation-name: $name;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay: 1s;
+    @keyframes #{$name} {
+        0% {
+            top: 0px;
+            left: 0px;
+        }
+
+        25% {
+            left: $distance;
+            top: 0px;
+        }
+
+        50% {
+            top: $distance;
+            left: $distance;
+        }
+
+        75% {
+            left: 0px;
+            top: $distance;
+        }
+
+        100% {
+            top: 0px;
+            left: 0px;
+        }
+    }
+
+}
+
+.pink {
+  @include move(20px, pink);
+  background-color: pink;
+}
+
+.circle.yellow {
+  @include move(30px, yellow);
+  background-color: yellow;
+}
+
+.green {
+    width: 100px;
+height: 100px;
+  @include move(50px, green);
+  background-color: green;
+}
