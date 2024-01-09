@@ -9,6 +9,7 @@
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     animation-delay: 1s;
+    // 괄호 안에 쓸 때는 #{}안에 써야한다.
     @keyframes #{$name} {
         0% {
             top: 0px;
