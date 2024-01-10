@@ -6,7 +6,7 @@ function Panel( {title, children}) {
     // title = props.title
 
     //  context
-    const theme = useContext(ThemeContext);
+    const {theme} = useContext(ThemeContext);
     const className = 'Panel-' + theme;
     return ( <section className={className}>
         <h1>{title}</h1>
