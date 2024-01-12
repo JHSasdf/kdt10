@@ -8,7 +8,7 @@ function UserProvider({children}) {
     // 이름 변경할 수 있게 useState 사용
     console.log('createContent',UserContext)
 
-    const [name, setName] = useState(UserContext._currentValue);
+    const [name, setName] = useState('선지훈');
 
     return ( <>
     <UserContext.Provider value={{name, setName}}> {children} </UserContext.Provider>

@@ -3,12 +3,12 @@ import UserProvider from "./context/UserProvider";
 import UserProfile from "./components/UserProfile";
 import Form from "./components/Form";
 export const ThemeContext = createContext(null);
+export const MyContext = createContext('defaultValue');
 
 function App() {
-  const MyContext = createContext('defaultValue');
   
-
-
+  
+  
   return (
     <div className="App">
       {/* UserProvider에서 value prop으로 넘겨준 값을 UserProfile에서 Consumer or UseContext 사용해서 context 값을 쓸 수 있게 됨 */}
@@ -19,8 +19,11 @@ function App() {
      </UserProvider>
 
      {/* react dev 공식홈 */}
-     <ThemeContext.Provider value="dark">
+     <ThemeContext.Provider value={{theme: "dark", msg: "good!"}}>
+      <MyContext.Provider value={'val'}>
+
       <Form></Form>
+      </MyContext.Provider>
      </ThemeContext.Provider>
     </div>
   );

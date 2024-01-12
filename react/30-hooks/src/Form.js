@@ -40,6 +40,9 @@ function Form() {
           })}
         />
         {/* 에러 메시지 */}
+        {errors.username && (
+          <div>{errors.username.message}</div>
+        )}
         {errors.username?.message}
         <br />
 
